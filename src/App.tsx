@@ -5,13 +5,98 @@ import {
   ChevronRight, MessageSquare, Play, 
   CheckCircle2, Flame, BookOpen, Settings,
   BarChart3, ShieldAlert, Coins, Gift, Wallet,
-  CreditCard
+  CreditCard, XCircle
 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 
 // --- Types ---
 type ViewState = 'dashboard' | 'practice' | 'review' | 'chat' | 'rewards';
 type DailyTime = 30 | 60 | 120;
+type ChallengeState = 'idle' | 'in_progress' | 'completed';
+
+// --- SAT Practice Questions ---
+const DAILY_QUESTIONS = [
+  {
+    id: 1,
+    subject: 'Math',
+    question: 'If 3x + 7 = 22, what is the value of x?',
+    options: ['3', '5', '7', '9'],
+    answer: 1,
+  },
+  {
+    id: 2,
+    subject: 'Math',
+    question: 'A rectangle has a length of 12 and a width of 5. What is its area?',
+    options: ['34', '60', '17', '120'],
+    answer: 1,
+  },
+  {
+    id: 3,
+    subject: 'Math',
+    question: 'What is the slope of the line passing through (2, 4) and (6, 12)?',
+    options: ['1', '3', '2', '4'],
+    answer: 2,
+  },
+  {
+    id: 4,
+    subject: 'Math',
+    question: 'If f(x) = 2x² - 3, what is f(3)?',
+    options: ['9', '15', '12', '18'],
+    answer: 1,
+  },
+  {
+    id: 5,
+    subject: 'Math',
+    question: 'Solve: 2(x - 4) = 3x + 1. What is x?',
+    options: ['-9', '9', '-7', '7'],
+    answer: 0,
+  },
+  {
+    id: 6,
+    subject: 'Reading',
+    question: 'Which word is closest in meaning to "meticulous"?',
+    options: ['Careless', 'Careful', 'Hasty', 'Vague'],
+    answer: 1,
+  },
+  {
+    id: 7,
+    subject: 'Reading',
+    question: 'A passage states: "Despite the heavy rain, the event proceeded as planned." What does this suggest about the organizers?',
+    options: ['They were unprepared', 'They were determined', 'They were reckless', 'They were indifferent'],
+    answer: 1,
+  },
+  {
+    id: 8,
+    subject: 'Reading',
+    question: 'Which sentence uses a comma correctly?',
+    options: [
+      'She ran quickly, and she won the race.',
+      'She ran quickly and, she won the race.',
+      'She ran, quickly and she won the race.',
+      'She, ran quickly and she won the race.'
+    ],
+    answer: 0,
+  },
+  {
+    id: 9,
+    subject: 'Writing',
+    question: 'Choose the grammatically correct sentence:',
+    options: [
+      'Each of the students have submitted their assignment.',
+      'Each of the students has submitted their assignment.',
+      'Each of the students have submitted his assignment.',
+      'Each of the students has submitted his assignment.'
+    ],
+    answer: 1,
+  },
+  {
+    id: 10,
+    subject: 'Writing',
+    question: 'Which transition word best fills the blank? "The experiment failed. ___, the team learned valuable lessons."',
+    options: ['Therefore', 'However', 'Nevertheless', 'Furthermore'],
+    answer: 2,
+  },
+];
 
 // --- Mock Data ---
 const INITIAL_SCORE = 1230;
@@ -25,7 +110,15 @@ export default function App() {
   const [streak, setStreak] = useState(12);
   const [coins, setCoins] = useState(120);
   const [isBossFightActive, setIsBossFightActive] = useState(false);
-  const [dailyTestCompleted, setDailyTestCompleted] = useState(false);
+
+  // Daily Challenge State
+  const [challengeState, setChallengeState] = useState<ChallengeState>('idle');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [answers, setAnswers] = useState<(number | null)[]>(Array(10).fill(null));
+  const [showResult, setShowResult] = useState(false);
+  const [finalScore, setFinalScore] = useState(0);
+
   const [chatMessages, setChatMessages] = useState<{role: 'user' | 'model', text: string}[]>([
     { role: 'model', text: "Hey there! I'm your SAT Master Tutor. Ready to crush that 1550 goal today? What should we tackle first: Math or Reading?" }
   ]);
@@ -65,6 +158,45 @@ export default function App() {
       setIsTyping(false);
     }
   };
+
+  // --- Daily Challenge Handlers ---
+  const startChallenge = () => {
+    setChallengeState('in_progress');
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+    setAnswers(Array(10).fill(null));
+    setShowResult(false);
+  };
+
+  const handleSelectAnswer = (idx: number) => {
+    if (selectedAnswer !== null) return; // prevent changing answer
+    setSelectedAnswer(idx);
+    const newAnswers = [...answers];
+    newAnswers[currentQuestionIndex] = idx;
+    setAnswers(newAnswers);
+  };
+
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < DAILY_QUESTIONS.length - 1) {
+      setCurrentQuestionIndex(prev => prev + 1);
+      setSelectedAnswer(null);
+    } else {
+      // Calculate score
+      const correct = answers.filter((a, i) => a === DAILY_QUESTIONS[i].answer).length;
+      setFinalScore(correct);
+      setShowResult(true);
+      setChallengeState('completed');
+      // Award coins and XP if passed (80%+ = 8/10)
+      if (correct >= 8) {
+        setCoins(c => c + 20);
+        setXp(x => x + 100);
+      } else {
+        setXp(x => x + 30); // consolation XP
+      }
+    }
+  };
+
+  const currentQuestion = DAILY_QUESTIONS[currentQuestionIndex];
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white font-sans selection:bg-purple-500/30">
@@ -289,7 +421,7 @@ export default function App() {
                   </div>
                   <div>
                     <h3 className="font-bold">SAT Master Tutor</h3>
-                    <p className="text-xs text-green-400">Online â Ready to help</p>
+                    <p className="text-xs text-green-400">Online · Ready to help</p>
                   </div>
                 </div>
                 
@@ -367,41 +499,156 @@ export default function App() {
                    <div className="absolute top-0 right-0 p-4 opacity-10">
                      <Coins className="w-32 h-32" />
                    </div>
-                   <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                     <div>
-                       <div className="flex items-center gap-2 mb-2">
-                         <Flame className="w-5 h-5 text-orange-400" />
-                         <h3 className="text-xl font-bold text-yellow-400">Daily Challenge</h3>
-                       </div>
-                       <p className="text-white/80 max-w-md">
-                         Complete a mixed 10-question quiz. Pass with 80%+ to earn bonus coins!
-                       </p>
-                     </div>
-                     <div className="flex items-center gap-4">
-                       <div className="text-right">
-                         <div className="text-sm text-white/50 font-bold uppercase">Reward</div>
-                         <div className="text-xl font-bold text-yellow-400 flex items-center gap-1 justify-end">
-                           +20 <Coins className="w-4 h-4" />
+
+                   {/* Idle State */}
+                   {challengeState === 'idle' && (
+                     <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                       <div>
+                         <div className="flex items-center gap-2 mb-2">
+                           <Flame className="w-5 h-5 text-orange-400" />
+                           <h3 className="text-xl font-bold text-yellow-400">Daily Challenge</h3>
                          </div>
+                         <p className="text-white/80 max-w-md">
+                           Complete a mixed 10-question quiz. Pass with 80%+ to earn bonus coins!
+                         </p>
                        </div>
-                       {dailyTestCompleted ? (
-                         <div className="px-6 py-3 bg-green-500/20 text-green-400 font-bold rounded-xl border border-green-500/30 flex items-center gap-2">
-                           <CheckCircle2 className="w-5 h-5" /> Completed
+                       <div className="flex items-center gap-4">
+                         <div className="text-right">
+                           <div className="text-sm text-white/50 font-bold uppercase">Reward</div>
+                           <div className="text-xl font-bold text-yellow-400 flex items-center gap-1 justify-end">
+                             +20 <Coins className="w-4 h-4" />
+                           </div>
                          </div>
-                       ) : (
                          <button 
-                           onClick={() => {
-                             setDailyTestCompleted(true);
-                             setCoins(c => c + 20);
-                             setXp(x => x + 100);
-                           }}
+                           onClick={startChallenge}
                            className="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-colors shadow-lg shadow-yellow-500/20"
                          >
                            Start Challenge
                          </button>
+                       </div>
+                     </div>
+                   )}
+
+                   {/* In Progress State */}
+                   {challengeState === 'in_progress' && (
+                     <div className="relative z-10">
+                       <div className="flex items-center justify-between mb-4">
+                         <div className="flex items-center gap-2">
+                           <Flame className="w-5 h-5 text-orange-400" />
+                           <h3 className="text-xl font-bold text-yellow-400">Daily Challenge</h3>
+                         </div>
+                         <span className="text-sm text-white/60 font-bold">
+                           Question {currentQuestionIndex + 1} / {DAILY_QUESTIONS.length}
+                         </span>
+                       </div>
+
+                       {/* Progress Bar */}
+                       <div className="h-2 bg-black/30 rounded-full mb-6 overflow-hidden">
+                         <div
+                           className="h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full transition-all duration-300"
+                           style={{ width: `${((currentQuestionIndex) / DAILY_QUESTIONS.length) * 100}%` }}
+                         />
+                       </div>
+
+                       {/* Subject Tag */}
+                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 ${
+                         currentQuestion.subject === 'Math' ? 'bg-blue-500/20 text-blue-400' :
+                         currentQuestion.subject === 'Reading' ? 'bg-purple-500/20 text-purple-400' :
+                         'bg-green-500/20 text-green-400'
+                       }`}>
+                         {currentQuestion.subject}
+                       </span>
+
+                       {/* Question */}
+                       <p className="text-white font-semibold text-lg mb-5 leading-relaxed">
+                         {currentQuestion.question}
+                       </p>
+
+                       {/* Options */}
+                       <div className="grid grid-cols-1 gap-3 mb-6">
+                         {currentQuestion.options.map((option, idx) => {
+                           let style = 'bg-white/5 border-white/20 text-white/80 hover:bg-white/10';
+                           if (selectedAnswer !== null) {
+                             if (idx === currentQuestion.answer) {
+                               style = 'bg-green-500/20 border-green-500 text-green-300';
+                             } else if (idx === selectedAnswer && selectedAnswer !== currentQuestion.answer) {
+                               style = 'bg-red-500/20 border-red-500 text-red-300';
+                             } else {
+                               style = 'bg-white/5 border-white/10 text-white/40';
+                             }
+                           }
+                           return (
+                             <button
+                               key={idx}
+                               onClick={() => handleSelectAnswer(idx)}
+                               disabled={selectedAnswer !== null}
+                               className={`w-full text-left px-5 py-4 rounded-xl border font-medium transition-all ${style}`}
+                             >
+                               <span className="font-bold mr-3 text-white/50">{String.fromCharCode(65 + idx)}.</span>
+                               {option}
+                             </button>
+                           );
+                         })}
+                       </div>
+
+                       {/* Feedback & Next */}
+                       {selectedAnswer !== null && (
+                         <div className="flex items-center justify-between">
+                           <div className={`flex items-center gap-2 font-bold ${selectedAnswer === currentQuestion.answer ? 'text-green-400' : 'text-red-400'}`}>
+                             {selectedAnswer === currentQuestion.answer
+                               ? <><CheckCircle2 className="w-5 h-5" /> Correct!</>
+                               : <><XCircle className="w-5 h-5" /> Incorrect</>
+                             }
+                           </div>
+                           <button
+                             onClick={handleNextQuestion}
+                             className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-colors"
+                           >
+                             {currentQuestionIndex < DAILY_QUESTIONS.length - 1 ? 'Next Question →' : 'See Results'}
+                           </button>
+                         </div>
                        )}
                      </div>
-                   </div>
+                   )}
+
+                   {/* Completed State */}
+                   {challengeState === 'completed' && showResult && (
+                     <div className="relative z-10 text-center py-4">
+                       <div className="flex items-center gap-2 justify-center mb-4">
+                         <Flame className="w-5 h-5 text-orange-400" />
+                         <h3 className="text-xl font-bold text-yellow-400">Daily Challenge — Results</h3>
+                       </div>
+                       <div className={`text-6xl font-bold mb-2 ${finalScore >= 8 ? 'text-green-400' : 'text-orange-400'}`}>
+                         {finalScore} / 10
+                       </div>
+                       <p className="text-white/70 mb-4">
+                         {finalScore >= 8
+                           ? `🎉 Excellent! You passed with ${finalScore * 10}%! +20 Coins & +100 XP earned!`
+                           : `Keep going! You scored ${finalScore * 10}%. You need 80%+ to earn bonus coins. +30 XP for trying!`
+                         }
+                       </p>
+                       {/* Answer Review */}
+                       <div className="text-left space-y-2 mb-6 max-h-48 overflow-y-auto pr-1">
+                         {DAILY_QUESTIONS.map((q, i) => (
+                           <div key={i} className={`flex items-center gap-3 px-4 py-2 rounded-xl text-sm ${answers[i] === q.answer ? 'bg-green-500/10 text-green-300' : 'bg-red-500/10 text-red-300'}`}>
+                             {answers[i] === q.answer
+                               ? <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                               : <XCircle className="w-4 h-4 flex-shrink-0" />
+                             }
+                             <span className="flex-1 truncate">Q{i + 1}: {q.question}</span>
+                             {answers[i] !== q.answer && (
+                               <span className="text-xs text-white/50 flex-shrink-0">Ans: {q.options[q.answer]}</span>
+                             )}
+                           </div>
+                         ))}
+                       </div>
+                       <div className="flex items-center gap-2 justify-center">
+                         <div className="px-6 py-3 bg-green-500/20 text-green-400 font-bold rounded-xl border border-green-500/30 flex items-center gap-2">
+                           <CheckCircle2 className="w-5 h-5" /> Completed Today
+                         </div>
+                       </div>
+                     </div>
+                   )}
                  </div>
 
                  <h3 className="text-xl font-bold mb-4">Targeted Drills</h3>
