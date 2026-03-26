@@ -642,6 +642,240 @@ export const READING_QUESTIONS: Question[] = [
     answer: 1,
     explanation: 'Putnam attributes the decline to television. If the decline began before television was widely available, then television cannot be the primary cause — the decline predates it. This directly challenges his causal attribution.'
   },
+  {
+    id: 'r_e_08', source: 'CB', difficulty: 1,
+    domain: 'Information & Ideas', skill: 'Central Ideas and Details',
+    passage: 'Bioluminescence — the ability of living organisms to produce and emit light — occurs in a wide variety of marine creatures, including certain fish, jellyfish, and bacteria. The light is produced through a chemical reaction involving a molecule called luciferin. Scientists believe bioluminescence serves multiple purposes in the deep ocean, including attracting prey, deterring predators, and communicating with potential mates.',
+    question: 'Which choice best states the main idea of the passage?',
+    options: ['Luciferin is the molecule responsible for bioluminescence in marine organisms.', 'Bioluminescence is a widespread phenomenon in marine life that serves several biological functions.', 'Deep-ocean creatures rely on bioluminescence because sunlight cannot penetrate to great depths.', 'Scientists have recently discovered bioluminescence in previously unknown marine species.'],
+    answer: 1,
+    explanation: 'The passage introduces bioluminescence, explains its chemical basis, and describes its multiple purposes. The main idea encompasses all of this: bioluminescence is widespread in marine life and serves several functions.'
+  },
+  {
+    id: 'r_e_09', source: 'KA', difficulty: 1,
+    domain: 'Craft & Structure', skill: 'Words in Context',
+    passage: 'The new policy was ______ by community leaders: they praised its goals but expressed serious reservations about its implementation timeline and funding mechanisms.',
+    question: 'Which choice completes the text with the most logical and precise word?',
+    options: ['wholeheartedly endorsed', 'cautiously welcomed', 'firmly rejected', 'largely ignored'],
+    answer: 1,
+    explanation: '"Cautiously welcomed" captures the mixed response described — praising goals (welcomed) but expressing reservations (cautiously). The other options don\'t match this nuanced response.'
+  },
+  {
+    id: 'r_e_10', source: 'SIM', difficulty: 1,
+    domain: 'Information & Ideas', skill: 'Inferences',
+    passage: 'In 1928, Alexander Fleming noticed that a mold called Penicillium had contaminated one of his bacterial cultures and was killing the bacteria around it. Rather than discarding the contaminated plate, Fleming investigated the mold and eventually identified the antibacterial substance it produced, which he named penicillin.',
+    question: 'What can be reasonably inferred about Fleming based on the passage?',
+    options: ['He was already researching mold when he discovered penicillin.', 'He recognized scientific value in what others might have dismissed as a mistake.', 'He had previously attempted to create antibacterial substances without success.', 'His discovery was the result of a planned experiment rather than chance.'],
+    answer: 1,
+    explanation: 'Fleming chose to investigate a contaminated plate rather than discard it. This shows he recognized potential scientific value in what appeared to be a failed experiment — a key inference the passage supports.'
+  },
+  {
+    id: 'r_e_11', source: 'CB', difficulty: 1,
+    domain: 'Craft & Structure', skill: 'Text Structure and Purpose',
+    passage: 'The Amazon rainforest produces approximately 20% of the world\'s oxygen and is home to an estimated 10% of all species on Earth. Despite its importance, the Amazon faces severe deforestation: an area roughly the size of a football field is cleared every minute. At current rates, scientists warn that the Amazon could lose its ability to generate rainfall and sustain its own ecosystem within decades.',
+    question: 'What is the primary purpose of the passage?',
+    options: ['To argue that governments should immediately ban all logging in the Amazon.', 'To describe the Amazon\'s ecological importance and the threat it faces from deforestation.', 'To explain the scientific process by which the Amazon produces oxygen.', 'To compare deforestation rates in the Amazon with those in other rainforests.'],
+    answer: 1,
+    explanation: 'The passage first establishes the Amazon\'s importance (oxygen, biodiversity) and then describes the threat of deforestation. The primary purpose is to present both the importance and the threat.'
+  },
+  {
+    id: 'r_e_12', source: 'KA', difficulty: 1,
+    domain: 'Information & Ideas', skill: 'Command of Evidence — Textual',
+    passage: 'Psychologist Carol Dweck distinguishes between two mindsets: a "fixed mindset," in which people believe their abilities are innate and unchangeable, and a "growth mindset," in which people believe abilities can be developed through effort and learning. Dweck\'s research found that students with a growth mindset were more likely to persist after failure and ultimately achieved higher academic performance than those with a fixed mindset.',
+    question: 'Which of the following, if true, would most directly support Dweck\'s findings?',
+    options: ['Students who were praised for their intelligence performed worse on subsequent challenging tasks than students praised for their effort.', 'Students with higher IQ scores consistently outperformed students with lower IQ scores.', 'Teachers who believed in fixed intelligence gave lower grades to students who struggled.', 'Students who attended schools with growth mindset programs reported higher satisfaction with school.'],
+    answer: 0,
+    explanation: 'Praising intelligence (reinforcing fixed mindset) leading to worse performance, while praising effort (reinforcing growth mindset) leads to better performance, directly supports Dweck\'s finding that growth mindset leads to better outcomes.'
+  },
+  {
+    id: 'r_e_13', source: 'SIM', difficulty: 1,
+    domain: 'Craft & Structure', skill: 'Words in Context',
+    passage: 'The CEO\'s announcement was deliberately ______: she outlined the company\'s general direction without committing to specific numbers, timelines, or personnel changes.',
+    question: 'Which choice completes the text with the most logical and precise word?',
+    options: ['transparent', 'vague', 'misleading', 'comprehensive'],
+    answer: 1,
+    explanation: '"Vague" means not clearly expressed or defined. The CEO outlined general direction without specific details — this is vague by design. "Misleading" implies deception, which is not stated.'
+  },
+  {
+    id: 'r_e_14', source: 'CB', difficulty: 1,
+    domain: 'Information & Ideas', skill: 'Central Ideas',
+    passage: 'Unlike most sharks, which must keep swimming to breathe, the nurse shark can remain motionless on the ocean floor for extended periods. It does this by actively pumping water over its gills through a process called buccal pumping. This adaptation allows nurse sharks to rest and conserve energy in ways that most other shark species cannot.',
+    question: 'Which choice best states the central idea of the passage?',
+    options: ['Nurse sharks are more intelligent than other shark species.', 'The nurse shark has a unique adaptation that allows it to rest on the ocean floor.', 'Most sharks must swim continuously to survive.', 'Buccal pumping is a common technique used by many bottom-dwelling fish.'],
+    answer: 1,
+    explanation: 'The passage focuses on the nurse shark\'s unique ability to remain motionless — the central idea is that this shark has a distinctive adaptation (buccal pumping) that allows it to rest in a way other sharks cannot.'
+  },
+  {
+    id: 'r_e_15', source: 'SIM', difficulty: 1,
+    domain: 'Information & Ideas', skill: 'Command of Evidence — Textual',
+    passage: 'Historian Barbara Tuchman argued that governments throughout history have repeatedly pursued policies that were clearly contrary to their own interests, a phenomenon she called "folly." She defined folly as a policy that was perceived as counterproductive at the time it was adopted — not just in hindsight — and for which alternative courses of action were available.',
+    question: 'Which scenario best fits Tuchman\'s definition of "folly"?',
+    options: ['A government implements a policy that fails due to unforeseen economic circumstances.', 'A government pursues a military campaign that contemporary advisors warned would be disastrous, despite viable alternatives.', 'A government makes a decision that historians later determine was misguided.', 'A government chooses the least harmful option among several bad choices.'],
+    answer: 1,
+    explanation: 'Tuchman\'s definition requires three elements: counterproductive at the time (not just hindsight), perceived as such by contemporaries, and alternatives were available. Option B satisfies all three: advisors warned it would fail (contemporary perception), alternatives existed, and it was pursued anyway.'
+  },
+
+  // MEDIUM 9
+  {
+    id: 'r_m_07', source: 'CB', difficulty: 2,
+    domain: 'Craft & Structure', skill: 'Words in Context — nuanced',
+    passage: 'The novelist\'s prose style was ______: each sentence was stripped of ornamentation, relying on precise word choice and rhythm rather than elaborate description to convey emotion.',
+    question: 'Which choice completes the text with the most logical and precise word?',
+    options: ['florid', 'austere', 'verbose', 'ornate'],
+    answer: 1,
+    explanation: '"Austere" means severe or strict in manner; without ornamentation. The passage explicitly says the prose was "stripped of ornamentation" — this is the definition of austere style.'
+  },
+  {
+    id: 'r_m_08', source: 'SIM', difficulty: 2,
+    domain: 'Information & Ideas', skill: 'Command of Evidence — Quantitative',
+    passage: 'A university study tracked the reading habits and academic performance of 500 students over four years:\n\nReading Frequency | Average GPA | Critical Thinking Score (out of 100)\nNever reads for pleasure | 2.8 | 61\nReads occasionally (1–2x/month) | 3.1 | 68\nReads regularly (1–2x/week) | 3.4 | 74\nReads daily | 3.7 | 82\n\nThe researchers concluded that pleasure reading is associated with stronger academic outcomes.',
+    question: 'Which choice most accurately characterizes the data in the table?',
+    options: ['Students who read daily had GPAs more than twice as high as students who never read.', 'Each increase in reading frequency corresponds to an increase in both GPA and critical thinking scores.', 'Critical thinking scores improved more dramatically than GPA across reading frequency groups.', 'Students who never read had critical thinking scores below 50.'],
+    answer: 1,
+    explanation: 'Looking at the table, each step up in reading frequency (Never → Occasional → Regular → Daily) shows increases in both GPA (2.8→3.1→3.4→3.7) and critical thinking scores (61→68→74→82). This is the most accurate characterization.'
+  },
+  {
+    id: 'r_m_09', source: 'CB', difficulty: 2,
+    domain: 'Information & Ideas', skill: 'Inferences',
+    passage: 'In the 1840s, Hungarian physician Ignaz Semmelweis noticed that the mortality rate from childbed fever in the maternity ward staffed by medical students was significantly higher than in the ward staffed by midwives. He discovered that medical students often came directly from performing autopsies to delivering babies without washing their hands. After implementing mandatory handwashing with chlorinated lime solution, mortality rates in the medical student ward dropped dramatically. Despite his results, the medical establishment largely rejected Semmelweis\'s findings.',
+    question: 'Based on the passage, what can be inferred about the medical establishment\'s rejection of Semmelweis\'s findings?',
+    options: ['The medical establishment had evidence that handwashing was ineffective.', 'The rejection likely occurred despite clear empirical evidence supporting Semmelweis\'s intervention.', 'The rejection was based on concerns about the cost of implementing handwashing protocols.', 'The medical establishment was unaware of the mortality rate differences between the two wards.'],
+    answer: 1,
+    explanation: 'The passage states that after implementing handwashing, mortality rates "dropped dramatically" — yet the establishment "largely rejected" the findings. This implies the rejection happened despite clear evidence, not because of lack of evidence.'
+  },
+  {
+    id: 'r_m_10', source: 'SIM', difficulty: 2,
+    domain: 'Craft & Structure', skill: 'Text Structure and Purpose',
+    passage: 'Proponents of nuclear energy often cite its low carbon emissions as a key advantage over fossil fuels. However, critics point out that while nuclear plants produce minimal emissions during operation, the full lifecycle — including uranium mining, fuel processing, plant construction, and waste disposal — has a significantly larger carbon footprint. Furthermore, the unresolved problem of long-term nuclear waste storage presents risks that extend thousands of years into the future.',
+    question: 'The primary purpose of the passage is to:',
+    options: ['Argue that nuclear energy should be abandoned in favor of renewable sources.', 'Present a more complete picture of nuclear energy\'s environmental impact than the common pro-nuclear argument offers.', 'Explain the technical process of nuclear power generation.', 'Compare the carbon emissions of nuclear energy and fossil fuels.'],
+    answer: 1,
+    explanation: 'The passage acknowledges the pro-nuclear argument (low operational emissions) but then complicates it by introducing lifecycle emissions and waste storage. The purpose is to present a fuller, more nuanced picture of nuclear energy\'s environmental impact.'
+  },
+  {
+    id: 'r_m_11', source: 'KA', difficulty: 2,
+    domain: 'Information & Ideas', skill: 'Command of Evidence — Textual',
+    passage: 'Economist Thomas Piketty argues in his book Capital in the Twenty-First Century that when the rate of return on capital (r) consistently exceeds economic growth (g), wealth inequality inevitably increases over time. He contends that this dynamic — r > g — has been the norm throughout most of human history and is responsible for the concentration of wealth in the hands of a small elite.',
+    question: 'Which of the following scenarios would most directly challenge Piketty\'s central argument?',
+    options: ['A country with high economic growth experiences a temporary decrease in wealth inequality.', 'A period in which r > g is accompanied by stable or declining wealth inequality.', 'A government implements a wealth tax that reduces the holdings of the top 1%.', 'Economic growth rates decline during a global recession.'],
+    answer: 1,
+    explanation: 'Piketty\'s argument is that r > g inevitably leads to increasing inequality. If r > g exists but inequality remains stable or declines, this directly challenges the inevitability of his claim.'
+  },
+  {
+    id: 'r_m_12', source: 'CB', difficulty: 2,
+    domain: 'Craft & Structure', skill: 'Cross-Text Connections',
+    passage: 'Text 1: Biologist E.O. Wilson argued that humans have an innate affinity for other living organisms and natural environments, a tendency he called "biophilia." He proposed that this connection evolved over millions of years of living in natural settings and that modern humans retain this deep-seated bond with nature.\n\nText 2: Psychologist Judith Heerwagen has studied the design of built environments and found that people consistently prefer spaces with natural elements — plants, water features, natural light, and views of nature — over spaces without them. She argues this preference has measurable effects on well-being and productivity.',
+    question: 'How does the evidence in Text 2 relate to the argument in Text 1?',
+    options: ['Text 2 challenges Text 1 by showing that human preferences for nature are culturally learned rather than innate.', 'Text 2 provides behavioral evidence consistent with the biophilia hypothesis described in Text 1.', 'Text 2 contradicts Text 1 by focusing on built environments rather than natural ones.', 'Text 2 extends Text 1\'s argument by explaining the evolutionary mechanism behind biophilia.'],
+    answer: 1,
+    explanation: 'Wilson\'s biophilia hypothesis predicts humans have an affinity for nature. Heerwagen\'s finding that people consistently prefer spaces with natural elements provides behavioral evidence consistent with this prediction — supporting rather than challenging it.'
+  },
+  {
+    id: 'r_m_13', source: 'SIM', difficulty: 2,
+    domain: 'Craft & Structure', skill: 'Words in Context',
+    passage: 'The committee\'s report was ______: it identified the problem clearly and in detail but offered no recommendations for how to address it, leaving stakeholders uncertain about the path forward.',
+    question: 'Which choice completes the text with the most logical and precise word?',
+    options: ['comprehensive', 'diagnostic but not prescriptive', 'misleading', 'actionable'],
+    answer: 1,
+    explanation: '"Diagnostic but not prescriptive" precisely captures the report\'s limitation: it diagnosed (identified) the problem but did not prescribe (recommend) solutions. This is the most precise description of what the passage describes.'
+  },
+  {
+    id: 'r_m_14', source: 'KA', difficulty: 2,
+    domain: 'Information & Ideas', skill: 'Central Ideas',
+    passage: 'The Columbian Exchange — the transfer of plants, animals, diseases, and ideas between the Americas and the Old World following Columbus\'s 1492 voyage — had profound and lasting effects on both hemispheres. Europeans gained access to crops like potatoes, tomatoes, and maize that would transform their diets and eventually support population growth. Indigenous American populations, however, suffered catastrophically from Old World diseases like smallpox, to which they had no immunity, with some estimates suggesting population declines of 50–90% in the century following contact.',
+    question: 'Which choice best states the central idea of the passage?',
+    options: ['Columbus\'s 1492 voyage was the most important event in world history.', 'The Columbian Exchange had dramatically different consequences for European and Indigenous American populations.', 'European crops were inferior to American crops before the Columbian Exchange.', 'Disease was the primary cause of the decline of Indigenous American civilizations.'],
+    answer: 1,
+    explanation: 'The passage describes benefits for Europeans (new crops, population growth) and catastrophic harm for Indigenous Americans (disease, population collapse). The central idea is the dramatically different consequences for the two groups.'
+  },
+  {
+    id: 'r_m_15', source: 'CB', difficulty: 2,
+    domain: 'Information & Ideas', skill: 'Inferences',
+    passage: 'In a 2019 study, researchers found that urban residents who spent at least two hours per week in natural settings — parks, forests, or bodies of water — reported significantly better health and well-being than those who spent less time in nature. The association held regardless of whether the two hours were accumulated in a single visit or spread across multiple shorter visits.',
+    question: 'Which inference is best supported by the passage?',
+    options: ['Urban residents who spend time in nature are generally healthier than rural residents.', 'The total amount of time spent in nature matters more than how that time is distributed.', 'Spending more than two hours per week in nature provides diminishing health returns.', 'Natural settings in urban areas are as beneficial as those in rural areas.'],
+    answer: 1,
+    explanation: 'The passage states the association held "regardless of whether the two hours were accumulated in a single visit or spread across multiple shorter visits." This supports the inference that total time matters more than how it\'s distributed.'
+  },
+
+  // HARD 8
+  {
+    id: 'r_h_07', source: 'CB', difficulty: 3,
+    domain: 'Craft & Structure', skill: 'Words in Context — highly nuanced',
+    passage: 'The historian\'s account was notable for its ______: rather than rendering judgment on historical actors, she confined herself to describing their actions and the contexts in which they operated, leaving evaluation to the reader.',
+    question: 'Which choice completes the text with the most logical and precise word?',
+    options: ['subjectivity', 'equivocation', 'detachment', 'ambivalence'],
+    answer: 2,
+    explanation: '"Detachment" means emotional distance or objectivity. The historian deliberately avoided rendering judgment and confined herself to description — this is scholarly detachment. "Equivocation" means being deliberately vague to avoid commitment, which is different. "Ambivalence" means having mixed feelings, not avoiding judgment.'
+  },
+  {
+    id: 'r_h_08', source: 'SIM', difficulty: 3,
+    domain: 'Information & Ideas', skill: 'Command of Evidence — Quantitative complex',
+    passage: 'A longitudinal study tracked 1,000 individuals from birth to age 40, measuring socioeconomic outcomes and early childhood factors:\n\nFactor | Correlation with Adult Income (r)\nParental income | 0.52\nCognitive test scores at age 5 | 0.41\nQuality of early childhood education | 0.38\nNeighborhood poverty rate at birth | −0.44\nParental education level | 0.47\n\nThe researchers concluded that parental income is the strongest predictor of adult income in their sample.',
+    question: 'A critic argues that the researchers\' conclusion overstates the independent effect of parental income. Which consideration best supports this critique?',
+    options: ['The correlation between parental income and adult income (0.52) is only slightly higher than other correlations.', 'Parental income is likely correlated with parental education, neighborhood poverty rate, and access to quality early childhood education, making it difficult to isolate its independent effect.', 'The study did not measure other potentially important factors such as personality traits.', 'Correlation coefficients cannot establish causation.'],
+    answer: 1,
+    explanation: 'The critique is about overstating the independent effect. The strongest argument is that parental income is correlated with the other measured factors (education, neighborhood, early education) — these factors are not independent, so the 0.52 correlation for parental income may reflect its association with these other factors rather than a purely independent effect.'
+  },
+  {
+    id: 'r_h_09', source: 'CB', difficulty: 3,
+    domain: 'Craft & Structure', skill: 'Cross-Text Connections — complex',
+    passage: 'Text 1: Philosopher John Rawls argued that just social arrangements are those that rational individuals would choose from behind a "veil of ignorance" — not knowing their place in society, their class position, or their natural assets. He concluded that such individuals would choose a society with equal basic liberties and economic arrangements that benefit the least advantaged members.\n\nText 2: Philosopher Robert Nozick countered that Rawls\'s framework ignores the moral significance of how distributions come about. Nozick argued that if a distribution arises through just steps — voluntary exchanges and legitimate acquisitions — it is just regardless of the resulting pattern of holdings, even if some end up with far more than others.',
+    question: 'Based on the texts, Nozick would most likely object to Rawls\'s "veil of ignorance" on which grounds?',
+    options: ['The veil of ignorance is psychologically unrealistic because people cannot truly forget their identities.', 'The veil of ignorance ignores the historical processes through which people acquire their holdings and talents.', 'The veil of ignorance would lead rational individuals to choose a completely equal distribution of resources.', 'The veil of ignorance correctly identifies what principles of justice should look like.'],
+    answer: 1,
+    explanation: 'Nozick\'s core objection is that justice is about process (how distributions come about through just steps), not pattern (what the resulting distribution looks like). The veil of ignorance focuses on choosing a just pattern without regard to the historical processes of acquisition — exactly what Nozick argues is morally significant.'
+  },
+  {
+    id: 'r_h_10', source: 'SIM', difficulty: 3,
+    domain: 'Information & Ideas', skill: 'Inferences — complex reasoning',
+    passage: 'Cognitive scientist Daniel Kahneman distinguishes between two systems of thinking: System 1, which operates automatically, quickly, and with little effort, relying on heuristics and intuition; and System 2, which is slow, deliberate, and effortful, engaging in careful logical reasoning. Kahneman argues that System 1 is prone to systematic biases and errors, but that System 2, while more accurate, is cognitively expensive and therefore used sparingly.',
+    question: 'Based on Kahneman\'s framework, which scenario best illustrates a situation where System 1 thinking leads to an error that System 2 could correct?',
+    options: ['A chess grandmaster instantly recognizes a winning move that a novice would need hours to calculate.', 'A person immediately assumes that a tall, well-dressed individual is a CEO rather than considering other possibilities.', 'A mathematician spends hours verifying a proof before publishing it.', 'A person feels anxious before a job interview despite knowing they are well-prepared.'],
+    answer: 1,
+    explanation: 'System 1 uses heuristics (mental shortcuts) that lead to biases. Assuming someone is a CEO based on appearance (tall, well-dressed) is a heuristic — specifically, the representativeness heuristic — that System 1 applies automatically. System 2 could correct this by deliberately considering other possibilities. The chess example is System 1 working correctly, not erroneously.'
+  },
+  {
+    id: 'r_h_11', source: 'CB', difficulty: 3,
+    domain: 'Craft & Structure', skill: 'Text Structure and Purpose — complex',
+    passage: 'The standard narrative of scientific progress depicts it as a steady accumulation of knowledge, with each generation building on the last. Historian of science Thomas Kuhn challenged this view in his landmark work The Structure of Scientific Revolutions. Kuhn argued that science does not progress smoothly but through "paradigm shifts" — revolutionary moments when the entire framework of a scientific field is overturned. During periods of "normal science," researchers work within an accepted paradigm; anomalies that don\'t fit the paradigm are initially ignored or explained away. Only when anomalies accumulate to a crisis point does a paradigm shift occur.',
+    question: 'The primary function of the first sentence is to:',
+    options: ['Provide the central argument that the rest of the passage will support.', 'Establish a conventional view that Kuhn\'s argument will challenge.', 'Introduce Thomas Kuhn as a historian of science.', 'Describe the methodology Kuhn used in his research.'],
+    answer: 1,
+    explanation: 'The first sentence presents the "standard narrative" of steady accumulation. The rest of the passage then introduces Kuhn\'s challenge to this view. The first sentence functions as a foil — a conventional view that is then complicated or contradicted.'
+  },
+  {
+    id: 'r_h_12', source: 'SIM', difficulty: 3,
+    domain: 'Information & Ideas', skill: 'Command of Evidence — complex textual',
+    passage: 'Anthropologist Margaret Mead\'s 1928 study Coming of Age in Samoa claimed that adolescence in Samoa was a period of carefree sexual freedom, in contrast to the stress and conflict typical of American adolescence. Mead concluded that adolescent turmoil was culturally determined rather than biologically inevitable. Decades later, anthropologist Derek Freeman conducted his own fieldwork in Samoa and argued that Mead had been misled by her informants, who had told her what they thought she wanted to hear, and that Samoan adolescence was in fact marked by considerable conflict and competition.',
+    question: 'If Freeman\'s critique is accurate, what would be the most significant implication for Mead\'s conclusion?',
+    options: ['Mead\'s fieldwork methods were generally unreliable and should not be used by other anthropologists.', 'The empirical basis for Mead\'s conclusion that adolescent turmoil is culturally determined would be undermined.', 'Adolescent turmoil is biologically inevitable in all cultures.', 'Samoan culture has changed significantly since Mead\'s 1928 study.'],
+    answer: 1,
+    explanation: 'Mead\'s conclusion (adolescent turmoil is culturally determined) rested on her finding that Samoan adolescence was carefree. If Freeman is correct that this finding was based on misleading information, the empirical foundation of her conclusion collapses — she cannot claim cultural determination based on data that was inaccurate.'
+  },
+  {
+    id: 'r_h_13', source: 'CB', difficulty: 3,
+    domain: 'Craft & Structure', skill: 'Words in Context — most precise',
+    passage: 'The policy\'s effects were ______: while it achieved its stated goal of reducing carbon emissions in the short term, it did so by shifting energy-intensive industries to countries with weaker environmental regulations, resulting in no net global reduction.',
+    question: 'Which choice completes the text with the most logical and precise word?',
+    options: ['counterproductive', 'pyrrhic', 'negligible', 'illusory'],
+    answer: 3,
+    explanation: '"Illusory" means based on illusion; not real. The policy appeared to succeed (reduced local emissions) but the success was an illusion — global emissions didn\'t actually decrease. "Pyrrhic" means a victory won at too great a cost, which doesn\'t quite fit. "Counterproductive" means having the opposite effect, which is too strong — the local goal was achieved. "Illusory" most precisely captures the idea that the apparent success was not real.'
+  },
+  {
+    id: 'r_h_14', source: 'SIM', difficulty: 3,
+    domain: 'Information & Ideas', skill: 'Central Ideas — complex',
+    passage: 'The concept of "moral luck" — introduced by philosophers Thomas Nagel and Bernard Williams — challenges the intuition that people should only be held morally responsible for what is within their control. Nagel identifies several types of moral luck: resultant luck (the outcomes of our actions), circumstantial luck (the situations we find ourselves in), and constitutive luck (the kind of person we are, including our character and dispositions). If moral luck is real, then two people who make identical choices may deserve very different moral assessments based purely on factors outside their control.',
+    question: 'Which choice best states the central claim of the passage?',
+    options: ['Moral luck is an incoherent concept that should be rejected by philosophers.', 'The concept of moral luck challenges the idea that moral responsibility should be based solely on what is within one\'s control.', 'Nagel and Williams disagree about the types of moral luck that exist.', 'Circumstantial luck is the most morally significant type of luck identified by Nagel.'],
+    answer: 1,
+    explanation: 'The passage introduces moral luck as a concept that "challenges the intuition that people should only be held morally responsible for what is within their control." This is the central claim — the concept challenges the control-based view of moral responsibility.'
+  },
+
+// ─── WRITING EXTRA: 25 new questions (Easy 8 / Medium 9 / Hard 8) ───
+
+  // EASY 8
+  {
 ];
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -835,7 +1069,236 @@ export const WRITING_QUESTIONS: Question[] = [
     answer: 1,
     explanation: 'With "neither...nor" constructions, the verb agrees with the subject closest to it. "The director" (singular) is closest to the verb, so use the singular "was."'
   },
+id: 'w_e_08', source: 'CB', difficulty: 1,
+    domain: 'Standard English Conventions', skill: 'Punctuation — colon',
+    passage: 'The recipe requires three main ingredients ______ flour, sugar, and butter.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [':', ';', ',', ' —'],
+    answer: 0,
+    explanation: 'A colon is used to introduce a list when the introductory clause is a complete sentence. "The recipe requires three main ingredients" is a complete clause, so a colon correctly introduces the list that follows.'
+  },
+  {
+    id: 'w_e_09', source: 'KA', difficulty: 1,
+    domain: 'Expression of Ideas', skill: 'Transitions — simple',
+    passage: 'Regular exercise has been shown to improve cardiovascular health. ______, studies indicate that physical activity can also enhance mental well-being and reduce symptoms of depression.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['However', 'Furthermore', 'Therefore', 'In contrast'],
+    answer: 1,
+    explanation: '"Furthermore" adds an additional point to support the same general idea. The passage is adding another benefit of exercise (mental well-being) to the first benefit (cardiovascular health). "Furthermore" correctly signals this additive relationship.'
+  },
+  {
+    id: 'w_e_10', source: 'SIM', difficulty: 1,
+    domain: 'Standard English Conventions', skill: 'Subject-verb agreement — basic',
+    passage: 'The collection of ancient manuscripts ______ housed in a climate-controlled vault to prevent deterioration.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['are', 'is', 'were', 'have been'],
+    answer: 1,
+    explanation: 'The subject is "collection" (singular), not "manuscripts." A prepositional phrase ("of ancient manuscripts") does not change the subject. The singular verb "is" agrees with the singular subject "collection."'
+  },
+  {
+    id: 'w_e_11', source: 'CB', difficulty: 1,
+    domain: 'Expression of Ideas', skill: 'Rhetorical Synthesis — basic',
+    passage: 'A student is writing a report about the benefits of public libraries. Which choice most effectively uses the following notes?\n• Public libraries provide free internet access to community members.\n• Libraries offer educational programs for children and adults.\n• Library cardholders can borrow books, DVDs, and other materials at no cost.\n• Many libraries provide meeting spaces for community organizations.',
+    question: 'Which choice most effectively synthesizes the notes into a single sentence?',
+    options: ['Public libraries are important institutions in many communities.', 'Public libraries serve as community hubs by providing free access to information, educational programs, borrowing services, and meeting spaces.', 'Public libraries offer internet access and books to community members.', 'Many people use public libraries for their educational programs.'],
+    answer: 1,
+    explanation: 'Option B synthesizes all four notes into a single comprehensive sentence, accurately representing the breadth of library services. Option A is too vague, Option C omits two of the four points, and Option D mentions only one.'
+  },
+  {
+    id: 'w_e_12', source: 'KA', difficulty: 1,
+    domain: 'Standard English Conventions', skill: 'Pronoun-antecedent agreement',
+    passage: 'Each of the students submitted ______ final project before the deadline.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['their', 'his or her', 'its', 'our'],
+    answer: 0,
+    explanation: 'In contemporary Standard English, "their" is widely accepted as a singular pronoun when the antecedent is indefinite (like "each"). Both "their" and "his or her" are acceptable, but "their" is the more natural contemporary choice.'
+  },
+  {
+    id: 'w_e_13', source: 'SIM', difficulty: 1,
+    domain: 'Standard English Conventions', skill: 'Verb tense consistency',
+    passage: 'The expedition team reached the summit at dawn, planted their flag, and ______ photographs before beginning the descent.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['take', 'taking', 'took', 'have taken'],
+    answer: 2,
+    explanation: 'The passage uses past tense verbs ("reached," "planted"). To maintain tense consistency, the third verb in the series should also be simple past: "took."'
+  },
+  {
+    id: 'w_e_14', source: 'CB', difficulty: 1,
+    domain: 'Expression of Ideas', skill: 'Transitions — contrast',
+    passage: 'Early studies suggested that the new drug was highly effective against the virus. ______, a larger clinical trial found that the drug\'s benefits were modest and its side effects more severe than initially reported.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['Similarly', 'Consequently', 'Nevertheless', 'However'],
+    answer: 3,
+    explanation: '"However" signals a contrast or contradiction. The second sentence contradicts the first (modest benefits vs. high effectiveness). "However" is the standard transition for this type of direct contrast.'
+  },
+  {
+    id: 'w_e_15', source: 'SIM', difficulty: 1,
+    domain: 'Standard English Conventions', skill: 'Apostrophe — possessive',
+    passage: 'The ______ decision to relocate the headquarters surprised many employees.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['companies', "company's", "companies'", 'company'],
+    answer: 1,
+    explanation: 'The sentence requires a singular possessive: one company made the decision. "Company\'s" (singular possessive) is correct. "Companies\'" would indicate multiple companies.'
+  },
+
+  // MEDIUM 9
+  {
+    id: 'w_m_08', source: 'CB', difficulty: 2,
+    domain: 'Expression of Ideas', skill: 'Transitions — complex logical relationship',
+    passage: 'Proponents of standardized testing argue that such tests provide an objective measure of student achievement that is not subject to the biases of individual teachers. ______, critics contend that standardized tests measure only a narrow range of skills and systematically disadvantage students from lower socioeconomic backgrounds.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['As a result', 'In addition', 'Conversely', 'For instance'],
+    answer: 2,
+    explanation: '"Conversely" signals a direct opposition or contrast from a different perspective. The passage presents the pro-testing argument and then the anti-testing argument — these are opposing viewpoints, making "Conversely" the most precise transition.'
+  },
+  {
+    id: 'w_m_09', source: 'SIM', difficulty: 2,
+    domain: 'Standard English Conventions', skill: 'Punctuation — semicolon vs. comma',
+    passage: 'The two proposals were fundamentally different ______ the first prioritized speed of implementation, while the second emphasized long-term sustainability.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [', and', ';', ', but', ': however,'],
+    answer: 1,
+    explanation: 'A semicolon correctly joins two independent clauses without a coordinating conjunction. "The two proposals were fundamentally different" and "the first prioritized speed..." are both independent clauses. A semicolon (option B) correctly connects them.'
+  },
+  {
+    id: 'w_m_10', source: 'CB', difficulty: 2,
+    domain: 'Expression of Ideas', skill: 'Rhetorical Synthesis — argumentative',
+    passage: 'A student is writing an essay arguing that cities should invest in cycling infrastructure. Which choice most effectively uses the following data to support this argument?\n• Cities with extensive cycling networks have 40% lower per-capita transportation emissions.\n• Cycling infrastructure costs approximately 10 times less per mile than highway construction.\n• Cities with high cycling rates report lower rates of obesity and cardiovascular disease.\n• Cycling reduces traffic congestion, saving commuters an average of 15 minutes per day.',
+    question: 'Which choice most effectively uses the data to support the argument for cycling infrastructure investment?',
+    options: ['Cycling is a healthy form of transportation that many people enjoy.', 'Investing in cycling infrastructure offers cities a cost-effective way to simultaneously reduce emissions, improve public health, and decrease traffic congestion.', 'Cities with cycling networks have lower transportation emissions than those without.', 'Cycling infrastructure is cheaper to build than highways.'],
+    answer: 1,
+    explanation: 'Option B synthesizes multiple data points (emissions, health, congestion) into a single compelling argument for investment. It uses the most relevant data points and frames them as benefits of investment, directly supporting the essay\'s argument.'
+  },
+  {
+    id: 'w_m_11', source: 'SIM', difficulty: 2,
+    domain: 'Standard English Conventions', skill: 'Modifier placement',
+    passage: 'Having studied the ancient texts for decades, ______ the historian\'s interpretation was considered authoritative by her peers.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['the ancient texts were finally understood,', 'the historian\'s interpretation was considered authoritative,', 'the historian offered an interpretation considered authoritative by her peers.', 'her peers considered the historian\'s interpretation authoritative.'],
+    answer: 2,
+    explanation: 'The participial phrase "Having studied the ancient texts for decades" must modify the subject of the main clause. The subject must be the historian (who did the studying). Option C correctly makes "the historian" the subject of the main clause.'
+  },
+  {
+    id: 'w_m_12', source: 'CB', difficulty: 2,
+    domain: 'Expression of Ideas', skill: 'Transitions — nuanced',
+    passage: 'The early results of the climate intervention were promising: global temperatures stabilized and extreme weather events decreased in frequency. ______, scientists cautioned that the intervention\'s long-term effects on precipitation patterns remained poorly understood and potentially destabilizing.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['Therefore', 'Nonetheless', 'Similarly', 'Specifically'],
+    answer: 1,
+    explanation: '"Nonetheless" means in spite of what has just been said — it acknowledges the positive results while introducing a contrasting concern. The passage presents good news (stabilized temperatures) but then introduces a caveat (unknown long-term effects). "Nonetheless" captures this concessive relationship.'
+  },
+  {
+    id: 'w_m_13', source: 'SIM', difficulty: 2,
+    domain: 'Standard English Conventions', skill: 'Punctuation — dash for emphasis',
+    passage: 'The solution to the city\'s housing crisis ______ according to urban planners ______ requires both increased construction and stronger tenant protections.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [', according to urban planners,', '— according to urban planners —', ': according to urban planners:', '; according to urban planners;'],
+    answer: 1,
+    explanation: 'Em dashes are used to set off a parenthetical phrase that interrupts the main clause, especially when the interruption is emphatic or the sentence already contains commas. "— according to urban planners —" correctly sets off the attribution as a parenthetical interruption.'
+  },
+  {
+    id: 'w_m_14', source: 'KA', difficulty: 2,
+    domain: 'Expression of Ideas', skill: 'Rhetorical Synthesis — precise claim',
+    passage: 'A researcher is writing a paper arguing that social media has negative effects on adolescent mental health. Which choice most effectively uses the following findings to support this specific claim?\n• Adolescents who use social media for more than 3 hours daily are 2.5 times more likely to report depression.\n• Social media platforms use algorithms designed to maximize engagement.\n• Cyberbullying affects approximately 37% of young people aged 12–17.\n• Adolescents who limit social media to 30 minutes daily show significant improvements in well-being within three weeks.',
+    question: 'Which choice most effectively uses the data to support the claim about negative mental health effects?',
+    options: ['Social media platforms are designed to be addictive, which raises ethical concerns.', 'Research shows that heavy social media use (3+ hours daily) is associated with a 2.5-fold increase in depression risk among adolescents, and cyberbullying — which affects 37% of young people — represents a direct harm facilitated by these platforms.', 'Adolescents who limit their social media use report better well-being.', 'Social media has both positive and negative effects on adolescent mental health.'],
+    answer: 1,
+    explanation: 'Option B uses two data points directly measuring negative mental health effects (depression risk and cyberbullying rates) and frames them as direct evidence of harm. It is the most specific and evidence-based support for the claim.'
+  },
+  {
+    id: 'w_m_15', source: 'CB', difficulty: 2,
+    domain: 'Standard English Conventions', skill: 'Verb form — infinitive vs. gerund',
+    passage: 'The committee recommended ______ the proposal before the final vote to allow more time for public comment.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['to table', 'tabling', 'that they table', 'the tabling of'],
+    answer: 1,
+    explanation: 'The verb "recommend" is typically followed by a gerund (verb + -ing) when the action is general. "Recommended tabling" is the standard construction. "Recommend to table" is not standard English; "recommend that they table" is also correct but more formal and wordy.'
+  },
+  {
+    id: 'w_m_16', source: 'SIM', difficulty: 2,
+    domain: 'Expression of Ideas', skill: 'Transitions — cause and effect',
+    passage: 'The region experienced its driest summer in recorded history. ______, wildfires spread rapidly across thousands of acres, destroying numerous homes and forcing mass evacuations.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['In contrast', 'As a result', 'Nevertheless', 'For example'],
+    answer: 1,
+    explanation: '"As a result" signals a cause-and-effect relationship. The drought (cause) led to the wildfires spreading rapidly (effect). "As a result" correctly identifies this causal connection.'
+  },
+
+  // HARD 8
+  {
+    id: 'w_h_07', source: 'CB', difficulty: 3,
+    domain: 'Standard English Conventions', skill: 'Punctuation — complex parenthetical',
+    passage: 'The treaty ______ signed in 1648 and considered the foundation of the modern nation-state system ______ established the principle of national sovereignty.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [', signed in 1648 and considered the foundation of the modern nation-state system,', '— signed in 1648 and considered the foundation of the modern nation-state system —', ', signed in 1648, and considered the foundation of the modern nation-state system,', 'signed in 1648 and considered the foundation of the modern nation-state system'],
+    answer: 1,
+    explanation: 'Em dashes are preferred when setting off a long, complex parenthetical phrase that contains its own commas. The phrase "signed in 1648 and considered the foundation of the modern nation-state system" is a complex appositive that interrupts the main clause. Em dashes clearly set off this interruption.'
+  },
+  {
+    id: 'w_h_08', source: 'SIM', difficulty: 3,
+    domain: 'Expression of Ideas', skill: 'Transitions — concessive complex',
+    passage: 'The evidence strongly suggests that the intervention reduced recidivism rates among participants. ______, without a randomized control group, it is impossible to rule out the possibility that participants who self-selected into the program were already less likely to reoffend.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['Therefore', 'Furthermore', 'That said', 'In particular'],
+    answer: 2,
+    explanation: '"That said" is a concessive transition meaning "despite what has just been said." It acknowledges the positive evidence while introducing a methodological limitation. This is more nuanced than "However" because it concedes the evidence\'s strength before raising the caveat.'
+  },
+  {
+    id: 'w_h_09', source: 'CB', difficulty: 3,
+    domain: 'Expression of Ideas', skill: 'Rhetorical Synthesis — complex argumentation',
+    passage: 'A student is writing an essay arguing that algorithmic decision-making in criminal justice (such as risk assessment tools used in sentencing) should be subject to greater transparency requirements. Which choice most effectively uses the following information?\n• Risk assessment algorithms are often proprietary, preventing defendants from challenging their accuracy.\n• Studies show some algorithms have higher error rates for Black defendants than white defendants.\n• Judges in some jurisdictions are required to consider algorithmic risk scores in sentencing decisions.\n• Proponents argue algorithms reduce human bias in sentencing.',
+    question: 'Which choice most effectively uses the information to support the argument for transparency requirements?',
+    options: ['Algorithmic decision-making raises important questions about fairness in the criminal justice system.', 'When judges are required to consider proprietary algorithmic scores in sentencing decisions, and those algorithms demonstrably produce racially disparate error rates, defendants have a compelling due process interest in understanding and challenging the tools used against them.', 'Some risk assessment algorithms have been shown to have higher error rates for certain demographic groups.', 'Proponents of algorithmic sentencing tools argue they reduce human bias, but critics disagree.'],
+    answer: 1,
+    explanation: 'Option B synthesizes three key pieces of information (mandatory judicial use, proprietary nature preventing challenge, racial disparities) into a coherent argument for transparency, framing it as a due process issue. It is the most specific and legally grounded support for the essay\'s argument.'
+  },
+  {
+    id: 'w_h_10', source: 'SIM', difficulty: 3,
+    domain: 'Standard English Conventions', skill: 'Agreement — inverted sentence',
+    passage: 'Among the most significant challenges facing the healthcare system ______ the rising cost of prescription drugs and the shortage of primary care physicians in rural areas.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: ['is', 'are', 'was', 'has been'],
+    answer: 1,
+    explanation: 'In an inverted sentence (where the subject follows the verb), identify the true subject: "the rising cost... and the shortage..." — a compound subject joined by "and." Compound subjects take plural verbs: "are."'
+  },
+  {
+    id: 'w_h_11', source: 'CB', difficulty: 3,
+    domain: 'Expression of Ideas', skill: 'Transitions — highly nuanced',
+    passage: 'The philosopher acknowledged that her argument rested on premises that many would find counterintuitive. ______, she argued, the strength of an argument cannot be judged by the palatability of its premises but only by the validity of its logical structure.',
+    question: 'Which choice completes the text with the most logical transition?',
+    options: ['Therefore', 'Nevertheless', 'Ultimately', 'In other words'],
+    answer: 2,
+    explanation: '"Ultimately" signals that what follows is the final or most important point, often after acknowledging complications. The philosopher acknowledges the counterintuitive premises but then makes her ultimate point about logical validity. "Ultimately" captures this rhetorical move of conceding a point and then asserting a more fundamental principle.'
+  },
+  {
+    id: 'w_h_12', source: 'SIM', difficulty: 3,
+    domain: 'Standard English Conventions', skill: 'Punctuation — restrictive vs. nonrestrictive',
+    passage: 'The regulation ______ requires companies to disclose their carbon emissions ______ was passed with bipartisan support.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [', which requires companies to disclose their carbon emissions,', 'that requires companies to disclose their carbon emissions', ', that requires companies to disclose their carbon emissions,', 'which requires companies to disclose their carbon emissions'],
+    answer: 0,
+    explanation: 'The relative clause "which requires companies to disclose their carbon emissions" is nonrestrictive — it provides additional information about a specific regulation already identified, rather than identifying which regulation is meant. Nonrestrictive clauses use "which" and are set off by commas.'
+  },
+  {
+    id: 'w_h_13', source: 'CB', difficulty: 3,
+    domain: 'Expression of Ideas', skill: 'Rhetorical Synthesis — nuanced claim',
+    passage: 'A student is writing a paper arguing that the benefits of globalization have been unevenly distributed. Which choice most effectively uses the following data?\n• Global GDP has increased 400% since 1990.\n• The share of people living in extreme poverty fell from 36% in 1990 to 10% in 2015.\n• Income inequality within most developed countries has increased since 1990.\n• The top 1% of earners captured 27% of global income growth between 1980 and 2016.',
+    question: 'Which choice most effectively uses the data to support the argument about uneven distribution?',
+    options: ['Globalization has produced significant economic growth since 1990.', 'While global GDP has grown 400% and extreme poverty has declined significantly, income inequality within developed countries has risen and the top 1% captured 27% of global income growth — suggesting that the gains from globalization have not been shared equally.', 'The top 1% of earners have benefited disproportionately from globalization.', 'Extreme poverty has declined significantly since 1990, demonstrating globalization\'s benefits.'],
+    answer: 1,
+    explanation: 'Option B presents both the positive data (GDP growth, poverty reduction) and the inequality data (rising within-country inequality, top 1% share) in a single sentence that directly supports the "uneven distribution" argument. It uses all four data points and frames them to support the specific claim.'
+  },
+  {
+    id: 'w_h_14', source: 'SIM', difficulty: 3,
+    domain: 'Standard English Conventions', skill: 'Sentence boundaries — complex',
+    passage: 'The study\'s methodology was rigorous ______ the researchers used a double-blind design, pre-registered their hypotheses, and had their statistical analysis independently verified before publication.',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [', and', ': specifically,', ', however,', ', because'],
+    answer: 1,
+    explanation: 'A colon followed by "specifically" correctly introduces an elaboration or explanation of the preceding claim. "The study\'s methodology was rigorous" is a complete claim, and what follows explains specifically why it was rigorous. A colon with "specifically" is the most precise and grammatically correct option.'
+  },
 ];
+
 
 // ═════════════════════════════════════════════════════════════════════════════
 // VOCABULARY — 30 words with SAT-style passage quiz, definition, example,
@@ -1155,4 +1618,159 @@ export const VOCAB_BANK: VocabWord[] = [
     answer: 0,
     explanation: '"Iconoclast" means someone who challenges established beliefs. Rejecting the dominant models in a field and challenging the discipline\'s foundations is iconoclastic.'
   },
+  {
+    word: 'Meticulous', partOfSpeech: 'adjective', difficulty: 1,
+    definition: 'Showing great attention to detail or being very careful and precise.',
+    example: 'The meticulous editor caught every typo in the manuscript.',
+    trick: 'METICULOUS → "METIC-ulous" — think of a METRIC ruler: someone meticulous measures everything precisely.',
+    passage: 'The forensic accountant was ______: she examined every transaction, no matter how small, and cross-referenced each entry against three separate records.',
+    options: ['careless', 'meticulous', 'hasty', 'indifferent'],
+    answer: 1,
+    explanation: '"Meticulous" means showing great attention to detail. Examining every transaction and cross-referencing against multiple records demonstrates meticulous work.'
+  },
+  {
+    word: 'Neutral', partOfSpeech: 'adjective', difficulty: 1,
+    definition: 'Not supporting or helping either side in a conflict, disagreement, or competition; impartial.',
+    example: 'Switzerland remained neutral during both World Wars.',
+    trick: 'NEUTRAL → "NEUT-ral" — NEUT means "neither." Neutral = neither one side nor the other.',
+    passage: 'The mediator worked hard to remain ______ throughout the negotiations, carefully avoiding any statement that could be interpreted as favoring one party over the other.',
+    options: ['biased', 'neutral', 'partisan', 'opinionated'],
+    answer: 1,
+    explanation: '"Neutral" means impartial, not favoring either side. A mediator who avoids statements favoring one party is maintaining neutrality.'
+  },
+  {
+    word: 'Obsolete', partOfSpeech: 'adjective', difficulty: 1,
+    definition: 'No longer produced or used; out of date.',
+    example: 'Fax machines have become largely obsolete in the digital age.',
+    trick: 'OBSOLETE → "OB-SO-lete" — sounds like "Oh, so late!" Something obsolete is SO late that it\'s no longer relevant.',
+    passage: 'The introduction of digital streaming made physical video rental stores ______: within a decade, thousands of locations had closed permanently.',
+    options: ['innovative', 'obsolete', 'thriving', 'essential'],
+    answer: 1,
+    explanation: '"Obsolete" means no longer used or relevant. Video rental stores closing because of streaming is a classic example of a technology becoming obsolete.'
+  },
+  {
+    word: 'Persevere', partOfSpeech: 'verb', difficulty: 1,
+    definition: 'To continue in a course of action even in the face of difficulty or with little or no prospect of success.',
+    example: 'Despite numerous rejections, she persevered and eventually published her novel.',
+    trick: 'PERSEVERE → "PER-SEVERE" — to go through SEVERE difficulties and keep going anyway.',
+    passage: 'Despite three failed experiments and pressure from her department to abandon the project, the researcher chose to ______, convinced that the approach was fundamentally sound.',
+    options: ['quit', 'persevere', 'compromise', 'retreat'],
+    answer: 1,
+    explanation: '"Persevere" means to continue despite difficulties. Continuing research despite failures and pressure to quit is perseverance.'
+  },
+  {
+    word: 'Skeptical', partOfSpeech: 'adjective', difficulty: 1,
+    definition: 'Not easily convinced; having doubts or reservations.',
+    example: 'Scientists are trained to be skeptical of claims that lack empirical evidence.',
+    trick: 'SKEPTICAL → "SKEPT-ical" — think of a SKEPTIC who always asks "Are you sure?" Skeptical = doubtful.',
+    passage: 'Many investors were ______ of the startup\'s projections, noting that the company had yet to generate any revenue and was promising 500% growth within two years.',
+    options: ['enthusiastic', 'skeptical', 'convinced', 'indifferent'],
+    answer: 1,
+    explanation: '"Skeptical" means having doubts. Investors questioning unrealistic projections from a company with no revenue are being skeptical.'
+  },
+
+  // MEDIUM 5
+  {
+    word: 'Pragmatic', partOfSpeech: 'adjective', difficulty: 2,
+    definition: 'Dealing with things sensibly and realistically in a way that is based on practical rather than theoretical considerations.',
+    example: 'The pragmatic manager chose the solution that worked, not the most elegant one.',
+    trick: 'PRAGMATIC → "PRAGMA" (Greek for "deed/action"). Pragmatic = focused on what works in practice, not theory.',
+    passage: 'Rather than insisting on the ideal solution, the negotiator took a ______ approach: she accepted a compromise that addressed the most critical issues while setting aside the more contentious points for future discussion.',
+    options: ['idealistic', 'pragmatic', 'dogmatic', 'theoretical'],
+    answer: 1,
+    explanation: '"Pragmatic" means focused on practical solutions. Accepting a workable compromise rather than holding out for the ideal solution is pragmatic.'
+  },
+  {
+    word: 'Proliferate', partOfSpeech: 'verb', difficulty: 2,
+    definition: 'To increase rapidly in number; to multiply.',
+    example: 'Social media platforms have proliferated over the past decade.',
+    trick: 'PROLIFERATE → "PRO-LIFER-ate" — think of things producing LIFE and multiplying rapidly. Proliferate = multiply quickly.',
+    passage: 'In the years following the invention of the smartphone, mobile applications ______: within a decade, millions of apps were available across various platforms.',
+    options: ['declined', 'proliferated', 'consolidated', 'stagnated'],
+    answer: 1,
+    explanation: '"Proliferated" means increased rapidly in number. Millions of apps appearing within a decade is proliferation.'
+  },
+  {
+    word: 'Reticent', partOfSpeech: 'adjective', difficulty: 2,
+    definition: 'Not revealing one\'s thoughts or feelings readily; reserved.',
+    example: 'The witness was reticent about discussing the details of the incident.',
+    trick: 'RETICENT → "RE-TIC-ent" — think of someone who TICKS (is nervous) and holds back. Reticent = holding back, reserved.',
+    passage: 'Although the scientist had made a groundbreaking discovery, she was ______ about publicizing it, preferring to wait until she had replicated the results multiple times.',
+    options: ['eager', 'reticent', 'boastful', 'transparent'],
+    answer: 1,
+    explanation: '"Reticent" means not revealing things readily. The scientist holding back from publicizing her discovery is being reticent.'
+  },
+  {
+    word: 'Substantiate', partOfSpeech: 'verb', difficulty: 2,
+    definition: 'To provide evidence to support or prove the truth of something.',
+    example: 'The journalist needed multiple sources to substantiate her claims.',
+    trick: 'SUBSTANTIATE → "SUB-STANCE" — to give SUBSTANCE (evidence) to a claim. Substantiate = back up with evidence.',
+    passage: 'The defense attorney argued that the prosecution had failed to ______ its key claim: no physical evidence, witness testimony, or documentary record supported the allegation.',
+    options: ['contradict', 'substantiate', 'exaggerate', 'dismiss'],
+    answer: 1,
+    explanation: '"Substantiate" means to provide evidence for a claim. The prosecution failing to provide evidence, witnesses, or documents means it failed to substantiate its claim.'
+  },
+  {
+    word: 'Tenuous', partOfSpeech: 'adjective', difficulty: 2,
+    definition: 'Very weak or slight; lacking a sound basis.',
+    example: 'The connection between the two events was tenuous at best.',
+    trick: 'TENUOUS → "TEN-uous" — think of a TEN-pound thread: very thin and weak. Tenuous = thin, weak, barely there.',
+    passage: 'The prosecutor\'s case rested on ______ evidence: a single witness whose account had changed three times and a circumstantial connection that the defense easily dismantled.',
+    options: ['overwhelming', 'tenuous', 'compelling', 'irrefutable'],
+    answer: 1,
+    explanation: '"Tenuous" means weak or lacking a sound basis. A case built on an unreliable witness and easily dismantled circumstantial evidence is tenuous.'
+  },
+
+  // HARD 5
+  {
+    word: 'Equivocate', partOfSpeech: 'verb', difficulty: 3,
+    definition: 'To use ambiguous language so as to conceal the truth or avoid committing oneself.',
+    example: 'The politician equivocated when asked directly about his position on the bill.',
+    trick: 'EQUIVOCATE → "EQUI-VOC" — EQUI means "equal," VOC means "voice." To equivocate = to speak with an "equal voice" on both sides, committing to neither.',
+    passage: 'When asked directly whether the company had known about the safety defect before the recall, the CEO ______: he acknowledged that "concerns had been raised" but refused to specify when, by whom, or what action had been taken.',
+    options: ['equivocated', 'confessed', 'elaborated', 'clarified'],
+    answer: 0,
+    explanation: '"Equivocated" means used ambiguous language to avoid committing to a direct answer. Acknowledging vague "concerns" without specifics while avoiding a direct answer is equivocation.'
+  },
+  {
+    word: 'Insidious', partOfSpeech: 'adjective', difficulty: 3,
+    definition: 'Proceeding in a gradual, subtle way, but with harmful effects.',
+    example: 'The insidious spread of misinformation eroded public trust in institutions.',
+    trick: 'INSIDIOUS → "IN-SID-ious" — think of something hiding INSIDE, gradually spreading harm. Insidious = harmful but hidden/gradual.',
+    passage: 'The bias in the algorithm was particularly ______: it did not produce obviously discriminatory results in individual cases, but over millions of decisions, it systematically disadvantaged applicants from certain zip codes.',
+    options: ['blatant', 'insidious', 'negligible', 'transparent'],
+    answer: 1,
+    explanation: '"Insidious" means harmful in a gradual, subtle way. A bias that isn\'t obvious in individual cases but produces systematic harm over millions of decisions is insidious.'
+  },
+  {
+    word: 'Obfuscate', partOfSpeech: 'verb', difficulty: 3,
+    definition: 'To make unclear or difficult to understand; to confuse or bewilder.',
+    example: 'The lengthy legal document seemed designed to obfuscate rather than clarify the terms.',
+    trick: 'OBFUSCATE → "OB-FUSE-cate" — to FUSE (mix up) things so they become unclear. Obfuscate = muddy the waters.',
+    passage: 'Critics accused the report of deliberately ______ the findings: key data was buried in appendices, conclusions were stated in passive constructions, and the executive summary omitted the most damaging statistics.',
+    options: ['clarifying', 'obfuscating', 'publicizing', 'simplifying'],
+    answer: 1,
+    explanation: '"Obfuscating" means making unclear or difficult to understand. Burying data, using passive constructions, and omitting key statistics are all techniques for obscuring findings.'
+  },
+  {
+    word: 'Perfunctory', partOfSpeech: 'adjective', difficulty: 3,
+    definition: 'Carried out with a minimum of effort or reflection; done as a routine duty.',
+    example: 'The inspector gave the building only a perfunctory review before signing off.',
+    trick: 'PERFUNCTORY → "PER-FUNCTION-ary" — doing something just to PERFORM the FUNCTION, with no real care. Perfunctory = going through the motions.',
+    passage: 'The safety audit was ______: inspectors spent less than twenty minutes at the facility, checked only the most visible equipment, and filed a report that was nearly identical to the previous year\'s.',
+    options: ['rigorous', 'perfunctory', 'comprehensive', 'meticulous'],
+    answer: 1,
+    explanation: '"Perfunctory" means done with minimum effort, as a routine. A 20-minute inspection that checks only visible equipment and reuses last year\'s report is perfunctory.'
+  },
+  {
+    word: 'Sanguine', partOfSpeech: 'adjective', difficulty: 3,
+    definition: 'Optimistic, especially in a difficult situation.',
+    example: 'Despite the setbacks, the team remained sanguine about their chances.',
+    trick: 'SANGUINE → "SANG-uine" — think of someone who SANG (past tense of sing) happily even in hard times. Sanguine = cheerfully optimistic.',
+    passage: 'Despite the company\'s declining market share and three consecutive quarters of losses, the CEO remained ______, insisting that the new product line would reverse the trend by year\'s end.',
+    options: ['pessimistic', 'sanguine', 'despondent', 'realistic'],
+    answer: 1,
+    explanation: '"Sanguine" means optimistic despite difficulties. Remaining confident about recovery despite declining share and losses is being sanguine.'
+  },
+
 ];
