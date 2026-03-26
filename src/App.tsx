@@ -33,7 +33,24 @@ interface WrongEntry {
 // ─────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────
-const getQuestionsForModule = (module: ModuleType, count: number, wrongOnly: boolean, wrongBook: WrongEntry[]): Question[] => {
+
+// Adaptive difficulty: returns a difficulty level (1/2/3) based on recent accuracy
+// accuracy: 0.0 ~ 1.0 (ratio of correct answers in last session)
+const getAdaptiveDifficulty = (accuracy: number | null): 1 | 2 | 3 => {
+  if (accuracy === null) return 1; // first time: start easy
+  if (accuracy >= 0.8) return 3;  // ≥80% correct → Hard
+  if (accuracy >= 0.5) return 2;  // 50~79% correct → Medium
+  return 1;                        // <50% correct → Easy
+};
+
+// Build a mixed question set weighted toward the adaptive difficulty level
+const getQuestionsForModule = (
+  module: ModuleType,
+  count: number,
+  wrongOnly: boolean,
+  wrongBook: WrongEntry[],
+  lastAccuracy: number | null = null
+): Question[] => {
   let pool: Question[] = [];
   if (module === 'math') pool = MATH_QUESTIONS;
   else if (module === 'reading') pool = READING_QUESTIONS;
@@ -44,11 +61,40 @@ const getQuestionsForModule = (module: ModuleType, count: number, wrongOnly: boo
     const wrongIds = wrongBook.filter(e => e.module === module).map(e => e.questionId);
     pool = pool.filter(q => wrongIds.includes(q.id));
     if (pool.length === 0) return [];
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, Math.min(count, shuffled.length));
   }
 
-  // Shuffle and take count
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+  // Adaptive difficulty distribution
+  const targetDiff = getAdaptiveDifficulty(lastAccuracy);
+  const easy = pool.filter(q => q.difficulty === 1).sort(() => Math.random() - 0.5);
+  const medium = pool.filter(q => q.difficulty === 2).sort(() => Math.random() - 0.5);
+  const hard = pool.filter(q => q.difficulty === 3).sort(() => Math.random() - 0.5);
+
+  let selected: Question[] = [];
+  if (targetDiff === 1) {
+    // Easy: 60% easy, 30% medium, 10% hard
+    const e = Math.round(count * 0.6), m = Math.round(count * 0.3), h = count - e - m;
+    selected = [...easy.slice(0, e), ...medium.slice(0, m), ...hard.slice(0, Math.max(0, h))];
+  } else if (targetDiff === 2) {
+    // Medium: 20% easy, 60% medium, 20% hard
+    const e = Math.round(count * 0.2), m = Math.round(count * 0.6), h = count - e - m;
+    selected = [...easy.slice(0, e), ...medium.slice(0, m), ...hard.slice(0, Math.max(0, h))];
+  } else {
+    // Hard: 10% easy, 30% medium, 60% hard
+    const e = Math.round(count * 0.1), m = Math.round(count * 0.3), h = count - e - m;
+    selected = [...easy.slice(0, e), ...medium.slice(0, m), ...hard.slice(0, Math.max(0, h))];
+  }
+
+  // Fill up if not enough questions at target difficulty
+  if (selected.length < count) {
+    const usedIds = new Set(selected.map(q => q.id));
+    const remaining = pool.filter(q => !usedIds.has(q.id)).sort(() => Math.random() - 0.5);
+    selected = [...selected, ...remaining].slice(0, count);
+  }
+
+  // Final shuffle so difficulty order is random
+  return selected.sort(() => Math.random() - 0.5).slice(0, count);
 };
 
 const sourceLabel = (src: string) => {
@@ -89,6 +135,16 @@ export default function App() {
   const [drillAnswers, setDrillAnswers] = useState<(number | null)[]>([]);
   const [drillFinalScore, setDrillFinalScore] = useState(0);
   const [showWrongBookPanel, setShowWrongBookPanel] = useState(false);
+
+  // Adaptive difficulty: stores last session accuracy per module (persisted)
+  const [lastAccuracy, setLastAccuracy] = useState<Record<string, number | null>>(() => {
+    try { return JSON.parse(localStorage.getItem('sat_last_accuracy') || '{}'); } catch { return {}; }
+  });
+  const saveLastAccuracy = (module: string, accuracy: number) => {
+    const updated = { ...lastAccuracy, [module]: accuracy };
+    setLastAccuracy(updated);
+    localStorage.setItem('sat_last_accuracy', JSON.stringify(updated));
+  };
 
   // Vocab State
   const [vocabMode, setVocabMode] = useState<VocabMode>('menu');
@@ -147,7 +203,8 @@ export default function App() {
       setVocabMode('menu');
       return;
     }
-    const qs = getQuestionsForModule(module, questionsPerModule, mode === 'wrong_only', wrongBook);
+    const acc = lastAccuracy[module] ?? null;
+    const qs = getQuestionsForModule(module, questionsPerModule, mode === 'wrong_only', wrongBook, acc);
     if (qs.length === 0) {
       alert(mode === 'wrong_only' ? 'No wrong questions yet for this module! Complete some drills first.' : 'No questions available.');
       return;
@@ -184,12 +241,16 @@ export default function App() {
       setDrillQIdx(p => p + 1); setDrillSelected(null);
     } else {
       const correct = drillAnswers.filter((a, i) => a === drillQuestions[i].answer).length;
+      const accuracy = correct / drillQuestions.length;
       setDrillFinalScore(correct);
       setDrillState('completed');
-      if (activeModule) setDailyProgress(p => ({ ...p, [activeModule]: true }));
+      if (activeModule) {
+        setDailyProgress(p => ({ ...p, [activeModule]: true }));
+        saveLastAccuracy(activeModule, accuracy);
+      }
       const xpReward = activeModule === 'math' ? 150 : activeModule === 'reading' ? 200 : 100;
-      setXp(x => x + Math.round(xpReward * (correct / drillQuestions.length)));
-      setCoins(c => c + (correct >= drillQuestions.length * 0.8 ? 20 : 5));
+      setXp(x => x + Math.round(xpReward * accuracy));
+      setCoins(c => c + (accuracy >= 0.8 ? 20 : 5));
     }
   };
 
@@ -424,6 +485,24 @@ export default function App() {
                     <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
                     <div className="text-5xl font-bold mb-2 text-yellow-400">{drillFinalScore} / {drillQuestions.length}</div>
                     <p className="text-white/70 mb-2">Module Completed! Daily check-in recorded.</p>
+                    {/* Adaptive difficulty feedback */}
+                    {(() => {
+                      const acc = drillFinalScore / drillQuestions.length;
+                      const nextDiff = acc >= 0.8 ? 'Hard' : acc >= 0.5 ? 'Medium' : 'Easy';
+                      const nextColor = acc >= 0.8 ? 'text-red-400' : acc >= 0.5 ? 'text-yellow-400' : 'text-green-400';
+                      const msg = acc >= 0.8
+                        ? 'Excellent! Next session will include more Hard questions.'
+                        : acc >= 0.5
+                        ? 'Good job! Next session will focus on Medium difficulty.'
+                        : 'Keep practicing! Next session will focus on Easy questions to build confidence.';
+                      return (
+                        <div className="bg-white/5 border border-white/10 rounded-xl p-3 mb-4 text-sm">
+                          <span className="text-white/60">Adaptive Difficulty: </span>
+                          <span className={`font-bold ${nextColor}`}>{nextDiff}</span>
+                          <p className="text-white/50 text-xs mt-1">{msg}</p>
+                        </div>
+                      );
+                    })()}
                     {wrongCountByModule(activeModule!) > 0 && (
                       <p className="text-red-400 text-sm mb-6">{wrongCountByModule(activeModule!)} questions added to your Wrong Book.</p>
                     )}
