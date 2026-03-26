@@ -9,7 +9,7 @@ import {
   RefreshCw, BookMarked, Lightbulb, AlertCircle
 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
-import { Question, MATH_QUESTIONS, READING_QUESTIONS, WRITING_QUESTIONS } from './questions';
+import { Question, MATH_QUESTIONS, READING_QUESTIONS, WRITING_QUESTIONS, VocabWord, VOCAB_BANK } from './questions';
 
 // ─────────────────────────────────────────────
 // Types
@@ -19,6 +19,8 @@ type DailyTime = 30 | 60 | 120;
 type ModuleType = 'math' | 'reading' | 'writing' | 'vocab';
 type DrillState = 'idle' | 'in_progress' | 'completed' | 'review';
 type VocabMode = 'menu' | 'learn' | 'review_cards' | 'daily_test';
+// vocab learn sub-mode: 'intro' shows word+definition+trick, 'quiz' shows SAT-style passage question
+type VocabLearnStep = 'intro' | 'quiz';
 type DrillMode = 'full' | 'wrong_only';
 
 interface WrongEntry {
@@ -96,6 +98,9 @@ export default function App() {
   const [vocabLearnedToday, setVocabLearnedToday] = useState(0);
   const [vocabReviewedToday, setVocabReviewedToday] = useState(0);
   const [vocabCardFlipped, setVocabCardFlipped] = useState(false);
+  const [vocabLearnStep, setVocabLearnStep] = useState<VocabLearnStep>('intro');
+  const [vocabQuizSelected, setVocabQuizSelected] = useState<number | null>(null);
+  const [vocabQuizAnswered, setVocabQuizAnswered] = useState(false);
 
   // Chat
   const [chatMessages, setChatMessages] = useState<{ role: 'user' | 'model'; text: string }[]>([
@@ -198,12 +203,32 @@ export default function App() {
       saveWrongBook(updated);
     }
     if (vocabLearnIdx < vocabDailyNew - 1) {
-      setVocabLearnIdx(p => p + 1); setVocabCardFlipped(false);
+      setVocabLearnIdx(p => p + 1);
+      setVocabCardFlipped(false);
+      setVocabLearnStep('intro');
+      setVocabQuizSelected(null);
+      setVocabQuizAnswered(false);
     } else {
       setVocabLearnedToday(vocabDailyNew);
       setDailyProgress(p => ({ ...p, vocab: true }));
       setXp(x => x + 50); setCoins(c => c + 10);
       setVocabMode('menu');
+    }
+  };
+
+  const handleVocabQuizSelect = (idx: number) => {
+    if (vocabQuizAnswered) return;
+    setVocabQuizSelected(idx);
+    setVocabQuizAnswered(true);
+    const word = VOCAB_BANK[vocabLearnIdx];
+    const correct = idx === word.answer;
+    if (!correct) {
+      const entry: WrongEntry = { questionId: `vocab_${word.word}`, module: 'vocab', wrongAnswer: idx, timestamp: Date.now() };
+      const updated = wrongBook.filter(e => e.questionId !== entry.questionId).concat(entry);
+      saveWrongBook(updated);
+    } else {
+      const updated = wrongBook.filter(e => e.questionId !== `vocab_${word.word}`);
+      saveWrongBook(updated);
     }
   };
 
@@ -482,30 +507,99 @@ export default function App() {
                       </div>
                     )}
 
-                    {vocabMode === 'learn' && (
-                      <div className="bg-white rounded-3xl p-6 text-black min-h-[500px] flex flex-col">
-                        <div className="flex justify-between items-center mb-4 text-gray-400 text-sm">
-                          <span>新词 {vocabLearnIdx + 1}/{vocabDailyNew}</span>
-                          <button onClick={() => setVocabMode('menu')}><XCircle className="w-6 h-6" /></button>
-                        </div>
-                        <div className="h-1.5 bg-gray-100 rounded-full mb-6 overflow-hidden"><div className="h-full bg-blue-500 transition-all" style={{ width: `${(vocabLearnIdx / vocabDailyNew) * 100}%` }} /></div>
-                        <div className="flex-1 flex flex-col items-center justify-center text-center">
-                          <h2 className="text-5xl font-bold mb-6">{VOCAB_BANK[vocabLearnIdx].word}</h2>
-                          <div className="bg-gray-50 rounded-2xl p-6 w-full mb-4">
-                            <p className="text-lg font-medium text-gray-800 mb-2">{VOCAB_BANK[vocabLearnIdx].definition}</p>
-                            <p className="text-sm text-gray-500 italic">"{VOCAB_BANK[vocabLearnIdx].example}"</p>
+                    {vocabMode === 'learn' && (() => {
+                      const word = VOCAB_BANK[vocabLearnIdx];
+                      return (
+                        <div className="bg-white rounded-3xl p-6 text-black min-h-[500px] flex flex-col">
+                          <div className="flex justify-between items-center mb-4 text-gray-400 text-sm">
+                            <span>新词 {vocabLearnIdx + 1}/{vocabDailyNew} · {vocabLearnStep === 'intro' ? '学习' : '考题练习'}</span>
+                            <button onClick={() => setVocabMode('menu')}><XCircle className="w-6 h-6" /></button>
                           </div>
-                          <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 w-full text-left">
-                            <div className="flex items-center gap-2 text-blue-600 font-bold text-sm mb-1"><Lightbulb className="w-4 h-4" /> 记忆技巧</div>
-                            <p className="text-sm text-blue-800">{VOCAB_BANK[vocabLearnIdx].trick}</p>
+                          <div className="h-1.5 bg-gray-100 rounded-full mb-6 overflow-hidden">
+                            <div className="h-full bg-blue-500 transition-all" style={{ width: `${((vocabLearnIdx + (vocabLearnStep === 'quiz' ? 0.5 : 0)) / vocabDailyNew) * 100}%` }} />
                           </div>
+
+                          {vocabLearnStep === 'intro' && (
+                            <>
+                              <div className="flex-1 flex flex-col items-center justify-center text-center">
+                                <h2 className="text-5xl font-bold mb-2">{word.word}</h2>
+                                <p className="text-gray-400 text-sm mb-6 italic">SAT High-Frequency Word</p>
+                                <div className="bg-gray-50 rounded-2xl p-6 w-full mb-4 text-left">
+                                  <p className="text-base font-semibold text-gray-700 mb-1">Definition</p>
+                                  <p className="text-lg font-medium text-gray-900 mb-3">{word.definition}</p>
+                                  <p className="text-sm text-gray-500 italic border-t border-gray-100 pt-3">"{word.example}"</p>
+                                </div>
+                                <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 w-full text-left">
+                                  <div className="flex items-center gap-2 text-blue-600 font-bold text-sm mb-1"><Lightbulb className="w-4 h-4" /> 记忆技巧</div>
+                                  <p className="text-sm text-blue-800">{word.trick}</p>
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => { setVocabLearnStep('quiz'); setVocabQuizSelected(null); setVocabQuizAnswered(false); }}
+                                className="w-full mt-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl text-lg transition-colors shadow-lg shadow-blue-600/30"
+                              >
+                                做一道考题巩固 →
+                              </button>
+                            </>
+                          )}
+
+                          {vocabLearnStep === 'quiz' && (
+                            <>
+                              <div className="flex-1 flex flex-col">
+                                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                                  <p className="text-xs font-bold text-amber-700 mb-1 uppercase tracking-wide">SAT-Style · Words in Context</p>
+                                  <p className="text-sm text-gray-800 leading-relaxed">
+                                    {word.passage.split('______').map((part, i, arr) => (
+                                      <span key={i}>{part}{i < arr.length - 1 && <span className="inline-block bg-gray-200 text-gray-200 rounded px-4 mx-0.5 font-bold">______</span>}</span>
+                                    ))}
+                                  </p>
+                                </div>
+                                <p className="text-sm font-semibold text-gray-700 mb-3">Which choice completes the text with the most logical and precise word?</p>
+                                <div className="space-y-2">
+                                  {word.options.map((opt, i) => {
+                                    const isSelected = vocabQuizSelected === i;
+                                    const isCorrect = i === word.answer;
+                                    let cls = 'w-full text-left px-5 py-3 rounded-xl border-2 font-medium transition-all text-sm ';
+                                    if (!vocabQuizAnswered) {
+                                      cls += 'border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-gray-800';
+                                    } else if (isCorrect) {
+                                      cls += 'border-green-500 bg-green-50 text-green-800';
+                                    } else if (isSelected) {
+                                      cls += 'border-red-400 bg-red-50 text-red-700';
+                                    } else {
+                                      cls += 'border-gray-100 bg-gray-50 text-gray-400';
+                                    }
+                                    return (
+                                      <button key={i} className={cls} onClick={() => handleVocabQuizSelect(i)}>
+                                        <span className="font-bold mr-2">{String.fromCharCode(65 + i)}.</span>{opt}
+                                        {vocabQuizAnswered && isCorrect && <span className="ml-2 text-green-600">✓</span>}
+                                        {vocabQuizAnswered && isSelected && !isCorrect && <span className="ml-2 text-red-500">✗</span>}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                                {vocabQuizAnswered && (
+                                  <div className={`mt-4 rounded-xl p-4 border ${vocabQuizSelected === word.answer ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                                    <p className={`text-sm font-bold mb-1 ${vocabQuizSelected === word.answer ? 'text-green-700' : 'text-red-700'}`}>
+                                      {vocabQuizSelected === word.answer ? '✓ Correct!' : `✗ The answer is ${word.options[word.answer]}`}
+                                    </p>
+                                    <p className="text-xs text-gray-600">{word.explanation}</p>
+                                  </div>
+                                )}
+                              </div>
+                              {vocabQuizAnswered && (
+                                <button
+                                  onClick={() => handleVocabLearnNext(vocabQuizSelected === word.answer)}
+                                  className="w-full mt-4 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-colors"
+                                >
+                                  {vocabLearnIdx < vocabDailyNew - 1 ? '下一个单词 →' : '完成今日词汇！'}
+                                </button>
+                              )}
+                            </>
+                          )}
                         </div>
-                        <div className="grid grid-cols-2 gap-4 mt-6">
-                          <button onClick={() => handleVocabLearnNext(false)} className="py-4 bg-red-100 text-red-600 font-bold rounded-2xl hover:bg-red-200 transition-colors">不认识</button>
-                          <button onClick={() => handleVocabLearnNext(true)} className="py-4 bg-green-500 text-white font-bold rounded-2xl hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30">认识</button>
-                        </div>
-                      </div>
-                    )}
+                      );
+                    })()}
 
                     {vocabMode === 'review_cards' && (
                       <div className="space-y-4">

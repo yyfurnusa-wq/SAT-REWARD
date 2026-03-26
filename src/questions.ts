@@ -696,3 +696,324 @@ export const WRITING_QUESTIONS: Question[] = [
     explanation: 'Choice C combines two specific data points (85% landfill rate + faster discard rate) to create a vivid, urgent picture of the waste problem accelerating — most effectively conveying urgency.'
   },
 ];
+
+// ═════════════════════════════════════════════════════════════════════════════
+// VOCABULARY BANK — 30 SAT high-frequency words
+// Each word is presented as a SAT-style "Words in Context" question:
+// a short passage with a blank, and 4 answer choices.
+// Includes: definition, example sentence, memory trick, and explanation.
+// ═════════════════════════════════════════════════════════════════════════════
+export interface VocabWord {
+  word: string;
+  definition: string;
+  example: string;
+  trick: string;
+  // SAT-style question fields
+  passage: string;       // Short passage with ______ blank
+  options: [string, string, string, string];
+  answer: 0 | 1 | 2 | 3;
+  explanation: string;
+}
+
+export const VOCAB_BANK: VocabWord[] = [
+  {
+    word: 'Aberrant',
+    definition: 'Departing from an accepted standard; abnormal.',
+    example: 'The scientist noted aberrant behavior in the test subjects.',
+    trick: 'ab- (away) + errare (to wander). Wandering away from normal.',
+    passage: 'The lab technician flagged the results as ______, noting that the measurements deviated significantly from the expected range established by previous experiments.',
+    options: ['consistent', 'aberrant', 'predictable', 'routine'],
+    answer: 1,
+    explanation: '"Aberrant" means departing from the norm — fitting for results that "deviated significantly from the expected range."'
+  },
+  {
+    word: 'Benevolent',
+    definition: 'Well-meaning and kindly; charitable.',
+    example: 'The benevolent donor funded the entire scholarship program.',
+    trick: 'bene- (good) + volent (wishing). Wishing good for others.',
+    passage: 'The ______ philanthropist quietly donated millions to local hospitals and schools, asking for nothing in return and refusing to have any buildings named after her.',
+    options: ['ambitious', 'benevolent', 'calculating', 'reluctant'],
+    answer: 1,
+    explanation: '"Benevolent" means well-meaning and generous — fitting for a philanthropist who gives without seeking recognition.'
+  },
+  {
+    word: 'Cacophony',
+    definition: 'A harsh, discordant mixture of sounds.',
+    example: 'The cacophony of the construction site made it hard to concentrate.',
+    trick: 'caco- (bad) + phon (sound). Bad sound.',
+    passage: 'The composer deliberately filled the opening bars with a ______ of clashing instruments to represent the chaos of the battlefield before the music resolved into a serene melody.',
+    options: ['harmony', 'silence', 'cacophony', 'rhythm'],
+    answer: 2,
+    explanation: '"Cacophony" means harsh, discordant noise — fitting for "clashing instruments" representing battlefield chaos.'
+  },
+  {
+    word: 'Dearth',
+    definition: 'A scarcity or lack of something.',
+    example: 'There was a dearth of qualified candidates for the position.',
+    trick: 'Sounds like "death" of supply — extreme scarcity.',
+    passage: 'The remote mountain village suffered a ______ of medical resources; the nearest hospital was three hours away, and the single clinic lacked basic supplies.',
+    options: ['surplus', 'dearth', 'abundance', 'variety'],
+    answer: 1,
+    explanation: '"Dearth" means scarcity or lack — fitting for a village that lacks medical resources.'
+  },
+  {
+    word: 'Ebullient',
+    definition: 'Cheerful and full of energy; exuberant.',
+    example: 'Her ebullient personality lit up every room she entered.',
+    trick: 'e- (out) + bullire (to boil). Boiling over with joy.',
+    passage: 'Despite the team\'s long losing streak, the coach remained ______, greeting each practice with infectious enthusiasm and convincing the players that victory was still within reach.',
+    options: ['despondent', 'cautious', 'ebullient', 'indifferent'],
+    answer: 2,
+    explanation: '"Ebullient" means cheerful and energetic — fitting for a coach who remains enthusiastic despite setbacks.'
+  },
+  {
+    word: 'Facetious',
+    definition: 'Treating serious issues with inappropriate humor.',
+    example: 'His facetious remarks during the meeting annoyed his colleagues.',
+    trick: 'Face-tious → making a funny face at a serious time.',
+    passage: 'When asked about the company\'s financial crisis, the CEO gave a ______ response, joking about the situation in a way that many employees found deeply disrespectful given the circumstances.',
+    options: ['sincere', 'facetious', 'thoughtful', 'diplomatic'],
+    answer: 1,
+    explanation: '"Facetious" means treating serious matters with inappropriate humor — fitting for a joke about a financial crisis.'
+  },
+  {
+    word: 'Garrulous',
+    definition: 'Excessively talkative, especially on trivial matters.',
+    example: 'The garrulous neighbor talked for an hour about nothing important.',
+    trick: 'Garru- sounds like gargle. Gargling words constantly.',
+    passage: 'The ______ tour guide spoke continuously for four hours, sharing every minor historical detail and personal anecdote, leaving tourists exhausted and unable to absorb the most important information.',
+    options: ['taciturn', 'garrulous', 'reserved', 'articulate'],
+    answer: 1,
+    explanation: '"Garrulous" means excessively talkative — fitting for a guide who speaks continuously about minor details.'
+  },
+  {
+    word: 'Harbinger',
+    definition: 'A person or thing that announces the approach of another.',
+    example: 'Dark clouds are a harbinger of the coming storm.',
+    trick: 'Harbor-bringer → brings news to the harbor.',
+    passage: 'Historians now view the 1929 stock market crash as a ______ of the Great Depression, an early signal of the widespread economic devastation that would follow over the next decade.',
+    options: ['consequence', 'harbinger', 'remedy', 'summary'],
+    answer: 1,
+    explanation: '"Harbinger" means a sign of things to come — fitting for the crash as an early signal of the Depression.'
+  },
+  {
+    word: 'Iconoclast',
+    definition: 'A person who attacks cherished beliefs or institutions.',
+    example: 'The iconoclast challenged every tradition the company held sacred.',
+    trick: 'icon (image) + clast (breaker). Image breaker.',
+    passage: 'Regarded as an ______ in the art world, the painter rejected every convention of her time, producing works so unconventional that critics initially dismissed them as nonsensical.',
+    options: ['iconoclast', 'traditionalist', 'imitator', 'scholar'],
+    answer: 0,
+    explanation: '"Iconoclast" means someone who challenges established conventions — fitting for a painter who "rejected every convention."'
+  },
+  {
+    word: 'Juxtapose',
+    definition: 'To place two things side by side for contrasting effect.',
+    example: 'The artist juxtaposed bright colors with dark shadows.',
+    trick: 'juxta (next to) + pose (place). Place next to each other.',
+    passage: 'The documentary ______ footage of the city\'s gleaming skyscrapers with images of nearby homeless encampments, creating a stark visual commentary on economic inequality.',
+    options: ['separates', 'juxtaposes', 'eliminates', 'reproduces'],
+    answer: 1,
+    explanation: '"Juxtapose" means to place side by side for contrast — fitting for placing skyscrapers next to homeless encampments.'
+  },
+  {
+    word: 'Laconic',
+    definition: 'Using very few words; brief and concise.',
+    example: 'His laconic reply — "No" — ended the discussion.',
+    trick: 'From Laconia (Sparta) — Spartans were famous for brief speech.',
+    passage: 'Known for her ______ communication style, the executive rarely sent emails longer than two sentences, trusting her team to understand the full scope of her instructions from minimal direction.',
+    options: ['verbose', 'laconic', 'elaborate', 'ambiguous'],
+    answer: 1,
+    explanation: '"Laconic" means using very few words — fitting for an executive whose emails are never longer than two sentences.'
+  },
+  {
+    word: 'Malleable',
+    definition: 'Easily influenced or shaped; adaptable.',
+    example: 'Young minds are malleable and absorb information quickly.',
+    trick: 'Mal- (hammer) → can be hammered into shape.',
+    passage: 'Unlike the rigid organizational structures of older corporations, the startup\'s culture was ______, adapting quickly to new challenges and allowing employees to redefine their roles as the company\'s needs evolved.',
+    options: ['inflexible', 'malleable', 'stagnant', 'hierarchical'],
+    answer: 1,
+    explanation: '"Malleable" means easily shaped or adaptable — fitting for a culture that adapts quickly to new challenges.'
+  },
+  {
+    word: 'Nefarious',
+    definition: 'Wicked or criminal; villainous.',
+    example: 'The detective uncovered the villain\'s nefarious scheme.',
+    trick: 'nefas (crime in Latin). Nefarious = criminal.',
+    passage: 'The investigation revealed a ______ scheme in which company executives had systematically falsified safety records, knowingly exposing workers to dangerous conditions to maximize profits.',
+    options: ['legitimate', 'nefarious', 'transparent', 'innovative'],
+    answer: 1,
+    explanation: '"Nefarious" means wicked or criminal — fitting for a scheme involving falsified records and deliberate harm.'
+  },
+  {
+    word: 'Obsequious',
+    definition: 'Excessively eager to please or obey; fawning.',
+    example: 'The obsequious assistant agreed with everything the boss said.',
+    trick: 'ob- (toward) + sequi (to follow). Always following and agreeing.',
+    passage: 'The new employee\'s ______ behavior — constantly complimenting the manager and volunteering for every task — struck his colleagues as insincere and calculated rather than genuinely helpful.',
+    options: ['independent', 'obsequious', 'assertive', 'candid'],
+    answer: 1,
+    explanation: '"Obsequious" means excessively eager to please — fitting for behavior seen as insincere flattery.'
+  },
+  {
+    word: 'Pedantic',
+    definition: 'Overly concerned with minor details or rules; showing off learning.',
+    example: 'The pedantic professor corrected every tiny grammatical error.',
+    trick: 'Ped- (teacher) → a teacher who over-teaches details.',
+    passage: 'The editor\'s ______ approach to the manuscript frustrated the author; rather than addressing the story\'s structural weaknesses, he spent hours debating the placement of individual commas.',
+    options: ['creative', 'pedantic', 'intuitive', 'collaborative'],
+    answer: 1,
+    explanation: '"Pedantic" means overly focused on minor details — fitting for an editor who debates comma placement instead of addressing bigger issues.'
+  },
+  {
+    word: 'Querulous',
+    definition: 'Complaining in a petulant or whining manner.',
+    example: 'The querulous customer complained about every aspect of the service.',
+    trick: 'Query (question/complain) + -ulous (full of). Full of complaints.',
+    passage: 'The ______ patient complained about the hospital food, the temperature of the room, the noise from the hallway, and the color of the walls — seemingly finding fault with every aspect of her stay.',
+    options: ['grateful', 'querulous', 'stoic', 'cheerful'],
+    answer: 1,
+    explanation: '"Querulous" means habitually complaining — fitting for a patient who finds fault with everything.'
+  },
+  {
+    word: 'Recalcitrant',
+    definition: 'Having an obstinately uncooperative attitude.',
+    example: 'The recalcitrant student refused to follow any classroom rules.',
+    trick: 're- (back) + calcitrare (to kick). Kicking back against authority.',
+    passage: 'Despite repeated warnings from regulators, the ______ corporation refused to comply with the new environmental standards, forcing authorities to impose substantial fines.',
+    options: ['cooperative', 'recalcitrant', 'eager', 'transparent'],
+    answer: 1,
+    explanation: '"Recalcitrant" means stubbornly uncooperative — fitting for a corporation that refuses to comply despite warnings.'
+  },
+  {
+    word: 'Sycophant',
+    definition: 'A person who flatters someone important to gain advantage.',
+    example: 'The politician was surrounded by sycophants who never disagreed with him.',
+    trick: 'Syco (fig) + phant (show) → ancient Greek term for flatterers.',
+    passage: 'The CEO surrounded herself with ______ who praised every decision she made, creating an environment where honest feedback was impossible and costly mistakes went unchallenged.',
+    options: ['critics', 'sycophants', 'advisors', 'rivals'],
+    answer: 1,
+    explanation: '"Sycophants" are flatterers who never offer honest criticism — fitting for people who "praised every decision" and prevented honest feedback.'
+  },
+  {
+    word: 'Taciturn',
+    definition: 'Reserved or uncommunicative in speech; saying little.',
+    example: 'The taciturn detective revealed nothing about the case.',
+    trick: 'Tacit (silent) → taciturn = tends to be silent.',
+    passage: 'In contrast to his ______ older brother, who rarely spoke more than a few words at family gatherings, Marco was animated and talkative, filling every silence with stories and observations.',
+    options: ['garrulous', 'taciturn', 'eloquent', 'persuasive'],
+    answer: 1,
+    explanation: '"Taciturn" means saying very little — the contrast with Marco\'s animated talkativeness makes this the correct choice.'
+  },
+  {
+    word: 'Ubiquitous',
+    definition: 'Present, appearing, or found everywhere.',
+    example: 'Smartphones have become ubiquitous in modern society.',
+    trick: 'ubi (where in Latin) → everywhere.',
+    passage: 'Once a niche technology used only by researchers, the internet has become ______ in daily life, embedded in everything from household appliances to medical devices to public transportation systems.',
+    options: ['rare', 'ubiquitous', 'obsolete', 'controversial'],
+    answer: 1,
+    explanation: '"Ubiquitous" means found everywhere — fitting for the internet, which is now "embedded in everything."'
+  },
+  {
+    word: 'Vacuous',
+    definition: 'Having or showing a lack of thought or intelligence; empty.',
+    example: 'The vacuous celebrity offered no meaningful commentary on the issue.',
+    trick: 'Vacuous = vacuum → empty of thought.',
+    passage: 'Critics dismissed the film\'s dialogue as ______, arguing that the characters exchanged meaningless pleasantries without ever revealing anything substantive about their motivations or inner lives.',
+    options: ['profound', 'vacuous', 'nuanced', 'compelling'],
+    answer: 1,
+    explanation: '"Vacuous" means empty of meaning or thought — fitting for dialogue described as "meaningless" and lacking substance.'
+  },
+  {
+    word: 'Wane',
+    definition: 'To decrease in vigor, power, or extent; to decline.',
+    example: 'His enthusiasm for the project began to wane after the setbacks.',
+    trick: 'Moon wanes (gets smaller). Wane = decrease.',
+    passage: 'As the initial excitement of the new policy began to ______, public support dropped steadily, and by the end of the year, fewer than a third of citizens still approved of the measure.',
+    options: ['surge', 'wane', 'stabilize', 'intensify'],
+    answer: 1,
+    explanation: '"Wane" means to decrease or decline — fitting for support that "dropped steadily" over time.'
+  },
+  {
+    word: 'Xenophobia',
+    definition: 'Dislike of or prejudice against people from other countries.',
+    example: 'The rise of xenophobia threatened the country\'s multicultural values.',
+    trick: 'xeno (foreign) + phobia (fear). Fear of foreigners.',
+    passage: 'Historians argue that ______ played a significant role in shaping the restrictive immigration policies of the 1920s, as many citizens feared that newcomers would undermine national culture and economic stability.',
+    options: ['patriotism', 'xenophobia', 'diplomacy', 'nationalism'],
+    answer: 1,
+    explanation: '"Xenophobia" means prejudice against foreigners — fitting for fears about newcomers undermining national culture.'
+  },
+  {
+    word: 'Zealous',
+    definition: 'Having or showing great energy or enthusiasm in pursuit of a cause.',
+    example: 'She was a zealous advocate for environmental protection.',
+    trick: 'Zeal → zealous. Full of zeal (passionate enthusiasm).',
+    passage: 'The ______ reformer worked eighteen-hour days, traveling across the country to speak at town halls and rallies, convinced that her efforts would bring about the legislative change she sought.',
+    options: ['apathetic', 'zealous', 'cautious', 'reluctant'],
+    answer: 1,
+    explanation: '"Zealous" means full of passionate enthusiasm — fitting for a reformer who works eighteen-hour days driven by conviction.'
+  },
+  {
+    word: 'Ambiguous',
+    definition: 'Open to more than one interpretation; not having one obvious meaning.',
+    example: 'The contract\'s ambiguous language led to a dispute.',
+    trick: 'ambi- (both) → pointing in two directions at once.',
+    passage: 'The treaty\'s ______ wording regarding territorial boundaries left both nations uncertain about their rights, ultimately leading to decades of diplomatic tension and occasional military confrontations.',
+    options: ['precise', 'ambiguous', 'binding', 'transparent'],
+    answer: 1,
+    explanation: '"Ambiguous" means open to multiple interpretations — fitting for wording that left both nations "uncertain."'
+  },
+  {
+    word: 'Ephemeral',
+    definition: 'Lasting for a very short time.',
+    example: 'The beauty of cherry blossoms is ephemeral.',
+    trick: 'ephemeros (Greek: lasting a day). Very short-lived.',
+    passage: 'Unlike the lasting monuments of ancient civilizations, many digital artworks are ______, existing only as long as the servers that host them remain operational and the platforms that display them stay active.',
+    options: ['permanent', 'ephemeral', 'resilient', 'enduring'],
+    answer: 1,
+    explanation: '"Ephemeral" means short-lived — fitting for digital art that exists only as long as its technological infrastructure survives.'
+  },
+  {
+    word: 'Pragmatic',
+    definition: 'Dealing with things sensibly and realistically.',
+    example: 'A pragmatic approach to the problem saved time.',
+    trick: 'pragma (Greek: deed/action). Focus on practical action.',
+    passage: 'Rather than pursuing an idealistic solution that would take years to implement, the committee took a ______ approach, adopting a series of smaller, immediately actionable measures that could produce results within months.',
+    options: ['idealistic', 'pragmatic', 'theoretical', 'impulsive'],
+    answer: 1,
+    explanation: '"Pragmatic" means practical and realistic — contrasted here with "idealistic," it fits the committee\'s focus on immediately actionable measures.'
+  },
+  {
+    word: 'Tenacious',
+    definition: 'Holding firmly to something; persistent and determined.',
+    example: 'Her tenacious spirit helped her overcome every obstacle.',
+    trick: 'tenere (Latin: to hold). Holding on tightly.',
+    passage: 'The ______ researcher spent fifteen years pursuing a theory that most of her colleagues dismissed as implausible, and her persistence was ultimately vindicated when her experiments produced definitive results.',
+    options: ['tentative', 'tenacious', 'indifferent', 'impulsive'],
+    answer: 1,
+    explanation: '"Tenacious" means persistent and determined — fitting for a researcher who spent fifteen years pursuing a dismissed theory.'
+  },
+  {
+    word: 'Verbose',
+    definition: 'Using more words than needed; wordy.',
+    example: 'The verbose report could have been summarized in one page.',
+    trick: 'verbum (Latin: word) + -ose (full of). Full of words.',
+    passage: 'The professor\'s ______ lecture style — in which a single concept might be explained through five different analogies and numerous digressions — often left students more confused than when they had arrived.',
+    options: ['concise', 'verbose', 'laconic', 'structured'],
+    answer: 1,
+    explanation: '"Verbose" means using more words than necessary — fitting for a lecture style full of multiple analogies and digressions.'
+  },
+  {
+    word: 'Conciliate',
+    definition: 'To make peace with; to appease or pacify.',
+    example: 'The manager tried to conciliate the angry customer.',
+    trick: 'con- (together) + cilia (eyelashes → winking). Winking to make peace.',
+    passage: 'After months of bitter negotiations, the union representative made a final effort to ______ the management team, proposing a series of compromises designed to address both sides\' core concerns.',
+    options: ['antagonize', 'conciliate', 'intimidate', 'ignore'],
+    answer: 1,
+    explanation: '"Conciliate" means to make peace or appease — fitting for proposing compromises to address both sides\' concerns.'
+  },
+];
